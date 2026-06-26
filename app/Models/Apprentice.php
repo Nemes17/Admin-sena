@@ -8,6 +8,9 @@ use Illuminate\Database\Eloquent\Model;
 class Apprentice extends Model
 {
     use HasFactory;
+    
+     protected $fillable = ['name', 'email', 'cell number', 'course_id', 'computer_id'];
+
     public function course(){
         return $this->belongsTo('App\Models\Course');
     }

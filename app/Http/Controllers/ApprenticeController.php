@@ -10,7 +10,17 @@ use App\Models\Computer;
 class ApprenticeController extends Controller
 {
     //
-     public function create(){
+    public function index(){
+    $apprentices = Apprentice::all();
+    return view('apprentice.index', compact('apprentices'));
+    }
+
+    public function show($id){
+    $apprentice = Apprentice::find($id);
+    return view('apprentice.show', compact('apprentice'));
+    }
+    
+    public function create(){
         $courses   = Course::all();
         $computers = Computer::all();
         return view('apprentice.create', compact('courses', 'computers'));

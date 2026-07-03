@@ -8,8 +8,14 @@ use App\Models\Computer;
 class ComputerController extends Controller
 {
     //
-    public function create(){
-        return view('computer.create');
+    public function index(){
+    $computers = Computer::all();
+    return view('Computer.index', compact('Computers'));
+    }
+
+    public function show($id){
+    $computer = Computer::find($id);
+    return view('Computer.show', compact('Computer'));
     }
 
     public function store(Request $request){
@@ -18,7 +24,7 @@ class ComputerController extends Controller
         $computer->number = $request->number;
         $computer->save();
 
-        return redirect()->route('computer.create')
+        return redirect()->route('Computer.create')
                          ->with('success', 'Computador creado correctamente');
     }
 }

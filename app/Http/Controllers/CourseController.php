@@ -12,6 +12,16 @@ use App\Models\Apprentice;
 class CourseController extends Controller
 {
     //
+    public function index(){
+    $courses = Course::all();
+    return view('course.index', compact('courses'));
+    }
+
+    public function show($id){
+    $course = Course::find($id);
+    return view('course.show', compact('course'));
+    }
+    
     public function create(){
         $areas           = Area::all();
         $trainingCenters = Training_center::all();

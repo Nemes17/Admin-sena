@@ -1,12 +1,10 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Nuevo Aprendiz</title>
-</head>
-<body>
-     <h2>Formulario Aprendiz</h2>
+@extends('layouts.app')
+
+@section('content')
+
+
+     <h2 mb-4 text-center>Registro de Aprendiz</h2>
+     <div class="card shadow p-4">
 
     @if(session('success'))
         <p style="color:green">{{ session('success') }}</p>
@@ -14,18 +12,25 @@
 
     <form action="{{ route('apprentice.store') }}" method="POST">
         @csrf
+        <div class="mb-3">
         <label>Name:</label>
         <input type="text" name="name">
+        </div>
         <br><br>
 
+        <div class="mb-3">
         <label>Email:</label>
         <input type="email" name="email">
+        </div>
         <br><br>
 
+        <div class="mb-3">
         <label>Cell Number:</label>
         <input type="text" name="cell_number">
+        </div>
         <br><br>
 
+        <div class="mb-3">
         <label>Course:</label>
         <select name="course_id">
             <option value="">-- Seleccionar --</option>
@@ -35,8 +40,10 @@
                 </option>
             @endforeach
         </select>
+        </div>
         <br><br>
 
+        <div class="mb-3">
         <label>Computer:</label>
         <select name="computer_id">
             <option value="">-- Seleccionar --</option>
@@ -46,9 +53,11 @@
                 </option>
             @endforeach
         </select>
+        </div>
         <br><br>
 
-        <button type="submit">Guardar</button>
+        <button type="submit">Enviar formulario</button>
     </form>
-</body>
-</html>
+    </div>
+
+@endsection

@@ -27,7 +27,30 @@ class AreaController extends Controller
         $area->name = $request->name;
         $area->save();
 
-        return redirect()->route('area.create')
+        return redirect()->route('area.index')
                          ->with('success', 'Área creada correctamente');
+    }
+    public function edit(Area $area)
+    {
+    return view('area.edit', [
+        'area' => $area,
+    ]);
+    }
+
+    public function update(Request $request, Area $area)
+    {
+    $data = $request->validate([
+        'name' => 'required|string|max:255',
+    ]);
+    $area->update($data);
+    return redirect()->route('area.create')
+                     ->with('success', 'Área actualizada correctamente.');
+    }
+
+    public function destroy(Area $area)
+    {
+    $area->delete();
+    return redirect()->route('area.create')
+                     ->with('success', 'Área eliminada correctamente.');
     }
 }

@@ -38,18 +38,11 @@
         </select>
         <br><br>
         
-        <label>Course:</label>
-        <select name="course_id">
-        <option value="">-- Seleccionar Curso --</option>
-        @foreach($courses as $course)
-        <option value="{{ $course->id }}">
-            {{ $course->{'course_number'} }}
-        </option>
-        @endforeach
-        </select>
-        <br><br>
 
-        <button type="submit">Guardar</button>
+        <button type="submit" class="btn btn-success" 
+        onclick="this.disabled=true; this.form.submit();">
+        Guardar Instructor
+        </button>
     </form>
     </div>
 @endsection

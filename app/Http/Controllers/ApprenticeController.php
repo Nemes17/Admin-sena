@@ -35,7 +35,36 @@ class ApprenticeController extends Controller
         $apprentice->computer_id   = $request->computer_id;
         $apprentice->save();
 
-        return redirect()->route('apprentice.create')
+        return redirect()->route('apprentice.index')
                          ->with('success', 'Aprendiz creado correctamente');
+    }
+    public function edit(Apprentice $apprentice)
+    {
+    return view('apprentice.edit', [
+        'apprentice' => $apprentice,
+        'courses'    => Course::all(),
+        'computers'  => Computer::all(),
+    ]);
+    }
+  
+
+    public function update(Request $request, Apprentice $apprentice)
+    {$data = $request->validate([
+        'name'        => 'required|string|max:255',
+        'email'       => 'required|email|max:255',
+        'cell number' => 'required|string|max:255',
+        'course_id'   => 'nullable|exists:courses,id',
+        'computer_id' => 'nullable|exists:computers,id',
+    ]);
+    $apprentice->update($data);
+    return redirect()->route('apprentice.create')
+                     ->with('success', 'Aprendiz actualizado correctamente.');
+    }
+
+    public function destroy(Apprentice $apprentice)
+    {
+    $apprentice->delete();
+    return redirect()->route('apprentice.create')
+                     ->with('success', 'Aprendiz eliminado correctamente.');
     }
 }

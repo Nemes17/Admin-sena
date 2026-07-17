@@ -36,7 +36,7 @@
             <option value="">-- Seleccionar --</option>
             @foreach($courses as $course)
                 <option value="{{ $course->id }}">
-                    {{ $course->{'course number'} }}
+                    {{ $course->{'course_number'} }}
                 </option>
             @endforeach
         </select>
@@ -56,7 +56,10 @@
         </div>
         <br><br>
 
-        <button type="submit">Enviar formulario</button>
+        <button type="submit" class="btn btn-success" 
+        onclick="this.disabled=true; this.form.submit();">
+        Guardar Aprendiz
+        </button>
     </form>
     </div>
 

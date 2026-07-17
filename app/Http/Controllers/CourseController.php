@@ -25,23 +25,45 @@ class CourseController extends Controller
     public function create(){
         $areas           = Area::all();
         $trainingCenters = Training_center::all();
-        $teachers        = Teacher::all();
-        return view('course.create', compact('areas', 'trainingCenters', 'teachers'));
+        return view('course.create', compact('areas', 'trainingCenters'));
     }
 
     public function store(Request $request){
         $course                     = new Course();
-        $course->{'course_number'}  = $request->course_number;
+        $course->course_number      = $request->course_number;
         $course->day                = $request->day;
         $course->area_id            = $request->area_id;
         $course->training_center_id = $request->training_center_id;
         $course->save();
+        return redirect()->route('course.index')->with('success', 'Curso creado correctamente');
+    }
+    public function edit(Course $course)
+    {
+    return view('course.edit', [
+        'course'          => $course,
+        'areas'           => Area::all(),
+        'trainingCenters' => Training_center::all(),
+        'teachers'        => Teacher::all(),
+    ]);
+    }
 
-        // Relación muchos a muchos con teachers
-        if($request->teacher_id){
-            $course->teachers()->attach($request->teacher_id);
-        }
+    public function update(Request $request, Course $course)
+    {
+    $data = $request->validate([
+        'course_number'       => 'required|integer',
+        'day'                 => 'required|date',
+        'area_id'             => 'nullable|exists:areas,id',
+        'training_center_id'  => 'nullable|exists:training_centers,id',
+    ]);
+    $course->update($data);
+    return redirect()->route('course.create')
+                     ->with('success', 'Curso actualizado correctamente.');
+    }
 
-        return redirect()->route('course.create')->with('success', 'Curso creado correctamente');
+    public function destroy(Course $course)
+    {
+    $course->delete();
+    return redirect()->route('course.create')
+                     ->with('success', 'Curso eliminado correctamente.');
     }
 }

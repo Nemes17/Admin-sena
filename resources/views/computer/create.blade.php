@@ -9,13 +9,16 @@
 
     <form action="{{ route('computer.store') }}" method="POST">
         @csrf
-        <label>Brand:</label>
+        <label>Marca del Equipo:</label>
         <input type="text" name="brand">
         <br><br>
-        <label>Number:</label>
+        <label>Numero del Equipo:</label>
         <input type="number" name="number">
         <br><br>
-        <button type="submit">Guardar</button>
+        <button type="submit" class="btn btn-success" 
+        onclick="this.disabled=true; this.form.submit();">
+        Guardar Computador
+        </button>
     </form>
     </div>
   @endsection

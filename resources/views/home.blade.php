@@ -3,7 +3,7 @@
 @section('content')
 
 <div class="text-center py-5">
-    <img src="https://www.sena.edu.co/Style%20Library/alayout/images/logoSena.png" 
+    <img src="{{asset("logo-sena.png")}}" 
          alt="SENA" height="120" class="mb-4">
     <h1 class="fw-bold" style="color: #3DAE2B;">Sistema de Administración SENA</h1>
     <p class="lead text-muted">Gestión de Centros de Formación, Instructores y Aprendices</p>

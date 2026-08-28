@@ -8,6 +8,7 @@ use App\Http\Controllers\TeacherController;
 use App\Http\Controllers\CourseController;
 use App\Http\Controllers\ApprenticeController;
 use App\Http\Controllers\CourseTeacherController;
+use App\Http\Controllers\ProfileController;
 
 /*
 |--------------------------------------------------------------------------
@@ -19,7 +20,8 @@ use App\Http\Controllers\CourseTeacherController;
 | be assigned to the "web" middleware group. Make something great!
 |
 */
-Route::get('/', function () { return view('home');})->name('home');
+Route::get('/', function () { return view('welcome');})->name('welcome');
+Route::get('/inicio', function () { return view('home');})->name('home');
 // Areas
 Route::get('/area/create', [AreaController::class, 'create'])->name('area.create');
 Route::post('/area/store', [AreaController::class, 'store'])->name('area.store');
@@ -81,3 +83,7 @@ Route::get('/course_teacher', [CourseTeacherController::class, 'index'])->name('
 Route::get('/course_teacher/create', [CourseTeacherController::class, 'create'])->name('course_teacher.create');
 Route::post('/course_teacher/store', [CourseTeacherController::class, 'store'])->name('course_teacher.store');
 Route::delete('/course_teacher/{id}', [CourseTeacherController::class, 'destroy'])->name('course_teacher.destroy');
+
+Route::get('/perfil', function () {
+    return view('profile.edit');
+})->name('profile.edit');

@@ -2,7 +2,7 @@
     <div class="container">
         <div class="row">
             <div class="col-md-3 text-center mb-3">
-                <img src="https://www.sena.edu.co/Style%20Library/alayout/images/logoSena.png" 
+                <img src="{{asset("logo-sena.png")}}"  
                      alt="SENA" height="80">
             </div>
             <div class="col-md-4 mb-3">

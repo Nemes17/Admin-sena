@@ -17,12 +17,12 @@ return new class extends Migration
             $table->string('email');
             $table->string('cell_number');
 
-            $table->unsignedBigInteger('course_id')->nullable()->unique();
+            $table->unsignedBigInteger('course_id')->nullable();
             $table->foreign('course_id')
             ->references('id')
             ->on('courses')
             ->onDelete('set null')
-            ->onUpdate('set null');
+            ->onUpdate('cascade');
 
 
             $table->unsignedBigInteger('computer_id')->nullable()->unique();
@@ -31,6 +31,13 @@ return new class extends Migration
             ->on('computers')
             ->onDelete('set null')
             ->onUpdate('set null');
+
+            $table->unsignedBigInteger('user_id')->nullable();
+            $table->foreign('user_id')
+            ->references('id')
+            ->on('users')
+            ->onDelete('set null')
+            ->onUpdate('cascade');
 
             $table->timestamps();
 

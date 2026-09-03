@@ -19,8 +19,10 @@ class User extends Authenticatable
      */
     protected $fillable = [
         'name',
+        'username',
         'email',
         'password',
+        'rol',
     ];
 
     /**
@@ -42,5 +44,16 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
         'password' => 'hashed',
     ];
+
+     public function administrative(){
+        return $this->hasOne('App\Models\Administrative');
+    }
+    public function apprentices(){
+        return $this->hasOne('App\Models\Apprentice');
+    }
+     public function teachers(){
+        return $this->hasOne('App\Models\Teacher');
+    }
+
     
 }

@@ -16,19 +16,26 @@ return new class extends Migration
             $table->string('name');
             $table->string('email');
 
-            $table->unsignedBigInteger('area_id')->nullable()->unique();
+            $table->unsignedBigInteger('area_id')->nullable();
             $table->foreign('area_id')
             ->references('id')
             ->on('areas')
             ->onDelete('set null')
-            ->onUpdate('set null');
+            ->onUpdate('cascade');
 
-            $table->unsignedBigInteger('training_center_id')->nullable()->unique();
+            $table->unsignedBigInteger('training_center_id')->nullable();
             $table->foreign('training_center_id')
             ->references('id')
             ->on('training_centers')
             ->onDelete('set null')
-            ->onUpdate('set null');
+            ->onUpdate('cascade');
+
+            $table->unsignedBigInteger('user_id')->nullable();
+            $table->foreign('user_id')
+            ->references('id')
+            ->on('users')
+            ->onDelete('set null')
+            ->onUpdate('cascade');
 
             $table->timestamps();
 

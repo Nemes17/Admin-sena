@@ -14,19 +14,19 @@ return new class extends Migration
         Schema::create('course_teachers', function (Blueprint $table) {
             $table->id();
 
-            $table->unsignedBigInteger('course_id')->nullable()->unique();
+            $table->unsignedBigInteger('course_id')->nullable();
             $table->foreign('course_id')
             ->references('id')
             ->on('courses')
             ->onDelete('set null')
-            ->onUpdate('set null');
+            ->onUpdate('cascade');
 
-            $table->unsignedBigInteger('teacher_id')->nullable()->unique();
+            $table->unsignedBigInteger('teacher_id')->nullable();
             $table->foreign('teacher_id')
             ->references('id')
             ->on('teachers')
             ->onDelete('set null')
-            ->onUpdate('set null');
+            ->onUpdate('cascade');
 
             $table->timestamps();
         });

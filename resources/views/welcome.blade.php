@@ -458,7 +458,7 @@
         <div class="container-fluid">
 
             <a class="navbar-brand d-flex align-items-center gap-2 fw-bold"
-               href="{{route("home")}}">
+               href="{{route("welcome")}}">
 
                 <span class="material-symbols-outlined brand-icon">
                     architecture
@@ -482,14 +482,14 @@
                 <div class="navbar-nav me-auto ms-lg-4">
 
                     <a class="nav-link fw-bold small nav-home"
-                       href="{{route("home")}}">
+                       href="{{route("welcome")}}">
                         Home
                     </a>
 
                 </div>
 
                 <a
-                    href="{{route("home")}}"
+                    href="{{route("login")}}"
                     class="btn btn-sena rounded-pill px-4 py-2"
                 >
                     Iniciar Sesión
@@ -542,7 +542,7 @@
                         <!-- RUTA EXACTA QUE ME DISTE -->
 
                         <a
-                            href="{{route("home")}}"
+                            href="{{route("login")}}"
                             class="btn btn-login btn-lg px-4 py-3 rounded-3 d-inline-flex align-items-center gap-2"
                         >
 
@@ -904,20 +904,18 @@
             </div>
 
             <div class="footer-links d-flex flex-wrap justify-content-center gap-3 small">
-
-                <a href="{{route("home")}}">
+                <a href="#">
                     Privacidad
                 </a>
 
-                <a href="{{route("home")}}">
+                <a href="#">
                     Términos de Uso
                 </a>
 
-                <a href="{{route("home")}}">
+                <a href="#">
                     Contacto
                 </a>
-
-                <a href="{{route("home")}}">
+                <a href="https://www.sena.edu.co" target="_blank">
                     Portal SENA
                 </a>
 

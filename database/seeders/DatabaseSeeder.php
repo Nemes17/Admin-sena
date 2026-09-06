@@ -17,7 +17,7 @@ class DatabaseSeeder extends Seeder
      */
     public function run(): void
     {
-        // 1. Administrador
+       // 1. Administrador
         $userAdmin = User::create([
             'name' => 'Admin Principal',
             'username' => 'Admin',
@@ -46,10 +46,11 @@ class DatabaseSeeder extends Seeder
         
         Teacher::create([ 
             'user_id' => $userInstructor->id,
-            // Asegúrate de usar los nombres de columnas en inglés que tengas en la migración de teachers
+            'name' => 'Instructor Prueba',
+            'email' => 'instructor@sistema.com',
         ]);
 
-        // 3. Aprendiz
+        // 3. Aprendiz (Con los campos obligatorios que exige su migración)
         $userAprendiz = User::create([
             'name' => 'Aprendiz Prueba',
             'username' => 'Aprendiz',
@@ -60,7 +61,10 @@ class DatabaseSeeder extends Seeder
         
         Apprentice::create([ 
             'user_id' => $userAprendiz->id,
-            // Asegúrate de usar los nombres de columnas en inglés que tengas en la migración de apprentices
+            'name' => 'Aprendiz Prueba',
+            'email' => 'aprendiz@sistema.com',
+            'cell_number' => '3001234567',
         ]);
-    }
+        
+        }
 }

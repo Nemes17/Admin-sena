@@ -42,7 +42,7 @@
                         </div>
 
                         <div class="col-12 text-end mt-4">
-                            <a href="{{ route('home') }}" class="btn btn-outline-secondary me-2">Cancelar</a>
+                            <a href="{{ route('administrative.home') }}" class="btn btn-outline-secondary me-2">Cancelar</a>
                             <button type="submit" class="btn text-white px-4" style="background-color: #00a859;">Guardar Cambios</button>
                         </div>
                     </div>

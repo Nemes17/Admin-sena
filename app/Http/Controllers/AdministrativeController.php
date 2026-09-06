@@ -9,6 +9,6 @@ class AdministrativeController extends Controller
     //
     public function index()
     {
-        return view('administrative.home');
+        return view('home');
     }
 }

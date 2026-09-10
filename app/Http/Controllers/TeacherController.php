@@ -7,19 +7,30 @@ use App\Models\Teacher;
 use App\Models\Area;
 use App\Models\Training_center;
 use App\Models\Course;
+use Illuminate\Support\Facades\Auth;
 
 
 class TeacherController extends Controller
 {
     //
+    // Muestra el panel personalizado del instructor autenticado
+    public function home(){
+        $teacher = Teacher::where('user_id', Auth::id())->first();
+        $courses = $teacher
+            ? $teacher->courses()->with('area', 'training_center')->get()
+            : collect();
+
+        return view('teacher.home', compact('teacher', 'courses'));
+    }
+
     public function index(){
     $teachers = Teacher::all();
     return view('teacher.index', compact('teachers'));
     }
 
     public function show($id){
-    $teacher = Teacher::find($id);
-    return view('teacher.show', compact('teacher'));
+        $teacher = Teacher::findOrFail($id);
+        return view('teacher.show', compact('teacher'));
     }
     
      public function create(){

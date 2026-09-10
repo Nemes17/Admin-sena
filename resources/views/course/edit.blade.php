@@ -50,6 +50,18 @@
     </select>
     <br><br>
 
+    <label for="environment_id">Ambiente</label>
+    <select name="environment_id" class="form-control">
+        <option value="">-- Seleccionar Ambiente --</option>
+        @foreach($environments as $environment)
+            <option value="{{ $environment->id }}"
+                {{ $course->environment_id == $environment->id ? 'selected' : '' }}>
+                {{ $environment->name }}
+            </option>
+        @endforeach
+    </select>
+    <br><br>
+
     <button type="submit" class="btn btn-warning"
             onclick="this.disabled=true; this.form.submit();">
         Actualizar Curso

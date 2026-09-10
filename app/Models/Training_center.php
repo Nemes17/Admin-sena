@@ -18,4 +18,9 @@ class Training_center extends Model
         return $this->hasMany('App\Models\Course');
     }
 
+    // Un centro de formación tiene muchos ambientes
+    public function environments(){
+        return $this->hasMany('App\Models\Environment');
+    }
+
 }

@@ -21,4 +21,9 @@ class Course extends Model
      public function teachers(){
         return $this->belongsToMany('App\Models\Teacher', 'course_teachers');
     }
+
+    // Un curso pertenece a un ambiente
+    public function environment(){
+        return $this->belongsTo('App\Models\Environment');
+    }
 }

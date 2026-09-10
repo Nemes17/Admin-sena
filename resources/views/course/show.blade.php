@@ -10,6 +10,7 @@
     <p><strong>Day:</strong> {{ $course->day }}</p>
     <p><strong>Área:</strong> {{ $course->area->name ?? 'Sin área' }}</p>
     <p><strong>Centro:</strong> {{ $course->training_center->name ?? 'Sin centro' }}</p>
+    <p><strong>Ambiente:</strong> {{ $course->environment->name ?? 'Sin asignar' }}</p>
 </div>
 
 <a href="{{ url('/course') }}" class="btn btn-secondary mt-3">← Volver</a>

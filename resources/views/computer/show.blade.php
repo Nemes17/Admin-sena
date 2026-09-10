@@ -8,6 +8,7 @@
     <p><strong>ID:</strong> {{ $computer->id }}</p>
     <p><strong>Brand:</strong> {{ $computer->brand }}</p>
     <p><strong>Number:</strong> {{ $computer->number }}</p>
+    <p><strong>Ambiente:</strong> {{ $computer->environment->name ?? 'Sin asignar' }}</p>
 </div>
 
 <a href="{{ url('/computer') }}" class="btn btn-secondary mt-3">← Volver</a>

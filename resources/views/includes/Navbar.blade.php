@@ -10,16 +10,29 @@
             <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            @php
+                $rol = auth()->check() ? auth()->user()->rol : null;
+            @endphp
             <ul class="navbar-nav mb-2 mb-lg-0">
+                @if($rol === 'instructor')
+                    <li class="nav-item">
+                        <a class="nav-link text-white" href="{{ route('teacher.home') }}">Home</a>
+                    </li>
+                @elseif($rol === 'aprendiz')
+                    <li class="nav-item">
+                        <a class="nav-link text-white" href="{{ route('apprentice.home') }}">Home</a>
+                    </li>
+                @else
                 <li class="nav-item">
                     <a class="nav-link text-white" href="{{ route('administrative.home') }}">Home</a>
                 </li>
                 <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle text-white" href="#" 
+                    <a class="nav-link dropdown-toggle text-white" href="#"
                        data-bs-toggle="dropdown">Registrar</a>
                     <ul class="dropdown-menu">
                         <li><a class="dropdown-item" href="/area/create">Área</a></li>
                         <li><a class="dropdown-item" href="/training_center/create">Centro de Formación</a></li>
+                        <li><a class="dropdown-item" href="/environment/create">Ambiente</a></li>
                         <li><a class="dropdown-item" href="/computer/create">Computador</a></li>
                         <li><a class="dropdown-item" href="/course/create">Curso</a></li>
                         <li><a class="dropdown-item" href="/teacher/create">Instructor</a></li>
@@ -29,11 +42,12 @@
                     </ul>
                 </li>
                 <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle text-white" href="#" 
+                    <a class="nav-link dropdown-toggle text-white" href="#"
                        data-bs-toggle="dropdown">Ver Registros</a>
                     <ul class="dropdown-menu">
                         <li><a class="dropdown-item" href="/area">Ver Áreas</a></li>
                         <li><a class="dropdown-item" href="/training_center">Ver Centros</a></li>
+                        <li><a class="dropdown-item" href="/environment">Ver Ambientes</a></li>
                         <li><a class="dropdown-item" href="/computer">Ver Computadores</a></li>
                         <li><a class="dropdown-item" href="/course">Ver Cursos</a></li>
                         <li><a class="dropdown-item" href="/teacher">Ver Instructores</a></li>
@@ -42,6 +56,7 @@
                         <li><a class="dropdown-item" href="/course_teacher">Ver Asignaciones</a></li>
                     </ul>
                 </li>
+                @endif
             </ul>
 
             <!-- Barra de búsqueda centrada/flexible -->

@@ -15,6 +15,14 @@ return new class extends Migration
             $table->id();
             $table->string('brand');
             $table->integer('number');
+
+            $table->unsignedBigInteger('environment_id')->nullable();
+            $table->foreign('environment_id')
+            ->references('id')
+            ->on('environments')
+            ->onDelete('set null')
+            ->onUpdate('cascade');
+
             $table->timestamps();
         });
     }

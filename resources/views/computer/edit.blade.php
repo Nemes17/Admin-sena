@@ -25,6 +25,18 @@
                value="{{ $computer->number }}">
     </label>
     <br><br>
+    <label>Ambiente:
+        <br>
+        <select name="environment_id" class="form-control">
+            <option value="">-- Seleccionar --</option>
+            @foreach($environments as $environment)
+                <option value="{{ $environment->id }}" @selected($computer->environment_id == $environment->id)>
+                    {{ $environment->name }}
+                </option>
+            @endforeach
+        </select>
+    </label>
+    <br><br>
 
     <button type="submit" class="btn btn-warning"
             onclick="this.disabled=true; this.form.submit();">

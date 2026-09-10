@@ -30,6 +30,12 @@ return new class extends Migration
             ->onDelete('set null')
             ->onUpdate('cascade');
 
+            $table->unsignedBigInteger('environment_id')->nullable();
+            $table->foreign('environment_id')
+            ->references('id')
+            ->on('environments')
+            ->onDelete('set null')
+            ->onUpdate('cascade');
 
             $table->timestamps();
         });

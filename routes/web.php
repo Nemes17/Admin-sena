@@ -8,6 +8,7 @@ use App\Http\Controllers\TeacherController;
 use App\Http\Controllers\CourseController;
 use App\Http\Controllers\ApprenticeController;
 use App\Http\Controllers\CourseTeacherController;
+use App\Http\Controllers\EnvironmentController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\AuthLogin;
 use App\Http\Controllers\AdministrativeController;
@@ -34,8 +35,12 @@ Route::post('/logout', [AuthLogin::class, 'logout'])->name('logout');
 // ==========================================
 Route::middleware('auth')->group(function () {
     
-    // El Home del Administrador (Esta reemplaza tu antigua ruta /inicio)
+    // El Home del Administrador
     Route::get('/administrative', [AdministrativeController::class, 'index'])->name('administrative.home');
+
+    // Paneles personalizados por rol (deben ir ANTES de las rutas con {id})
+    Route::get('/teacher/home', [TeacherController::class, 'home'])->name('teacher.home');
+    Route::get('/apprentice/home', [ApprenticeController::class, 'home'])->name('apprentice.home');
     
     Route::get('/perfil', function () { return view('profile.edit'); })->name('profile.edit');
 
@@ -92,6 +97,15 @@ Route::middleware('auth')->group(function () {
     Route::get('/apprentice/{apprentice}/edit', [ApprenticeController::class, 'edit']);
     Route::put('/apprentice/{apprentice}', [ApprenticeController::class, 'update'])->name('apprentice.update');
     Route::delete('/apprentice/{apprentice}', [ApprenticeController::class, 'destroy'])->name('apprentice.destroy');
+
+    // CRUD de Ambientes
+    Route::get('/environment/create', [EnvironmentController::class, 'create'])->name('environment.create');
+    Route::post('/environment/store', [EnvironmentController::class, 'store'])->name('environment.store');
+    Route::get('/environment', [EnvironmentController::class, 'index'])->name('environment.index');
+    Route::get('/environment/{id}', [EnvironmentController::class, 'show']);
+    Route::get('/environment/{environment}/edit', [EnvironmentController::class, 'edit']);
+    Route::put('/environment/{environment}', [EnvironmentController::class, 'update'])->name('environment.update');
+    Route::delete('/environment/{environment}', [EnvironmentController::class, 'destroy'])->name('environment.destroy');
 
     // Course_teacher
     Route::get('/course_teacher', [CourseTeacherController::class, 'index'])->name('course_teacher.index');

@@ -37,6 +37,15 @@
         <br><br>
         
 
+        <label>Ambiente:</label>
+        <select name="environment_id">
+            <option value="">-- Seleccionar --</option>
+            @foreach($environments as $environment)
+                <option value="{{ $environment->id }}">{{ $environment->name }}</option>
+            @endforeach
+        </select>
+        <br><br>
+
         <button type="submit" class="btn btn-success" 
         onclick="this.disabled=true; this.form.submit();">
         Guardar Curso

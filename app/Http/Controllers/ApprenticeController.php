@@ -6,10 +6,20 @@ use Illuminate\Http\Request;
 use App\Models\Apprentice;
 use App\Models\Course;
 use App\Models\Computer;
+use Illuminate\Support\Facades\Auth;
 
 class ApprenticeController extends Controller
 {
     //
+    // Muestra el panel personalizado del aprendiz autenticado
+    public function home(){
+        $apprentice = Apprentice::with('course.area', 'course.training_center', 'computer')
+            ->where('user_id', Auth::id())
+            ->first();
+
+        return view('apprentice.home', compact('apprentice'));
+    }
+
     public function index(){
     $apprentices = Apprentice::all();
     return view('apprentice.index', compact('apprentices'));
@@ -30,7 +40,7 @@ class ApprenticeController extends Controller
         $apprentice                = new Apprentice();
         $apprentice->name          = $request->name;
         $apprentice->email         = $request->email;
-        $apprentice->{'cell_number'} = $request->cell_number;
+        $apprentice->cell_number = $request->cell_number;
         $apprentice->course_id     = $request->course_id;
         $apprentice->computer_id   = $request->computer_id;
         $apprentice->save();
@@ -49,16 +59,19 @@ class ApprenticeController extends Controller
   
 
     public function update(Request $request, Apprentice $apprentice)
-    {$data = $request->validate([
-        'name'        => 'required|string|max:255',
-        'email'       => 'required|email|max:255',
-        'cell number' => 'required|string|max:255',
-        'course_id'   => 'nullable|exists:courses,id',
-        'computer_id' => 'nullable|exists:computers,id',
-    ]);
-    $apprentice->update($data);
-    return redirect()->route('apprentice.create')
-                     ->with('success', 'Aprendiz actualizado correctamente.');
+    {
+        $data = $request->validate([
+            'name'        => 'required|string|max:255',
+            'email'       => 'required|email|max:255',
+            'cell_number' => 'required|string|max:255', // <--- Corregido el espacio por guion bajo
+            'course_id'   => 'nullable|exists:courses,id',
+            'computer_id' => 'nullable|exists:computers,id',
+        ]);
+
+        $apprentice->update($data);
+
+        return redirect()->route('apprentice.index') // O la ruta a donde prefieras redirigir
+                         ->with('success', 'Aprendiz actualizado correctamente.');
     }
 
     public function destroy(Apprentice $apprentice)

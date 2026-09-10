@@ -8,6 +8,7 @@ use App\Models\Area;
 use App\Models\Training_center;
 use App\Models\Teacher;
 use App\Models\Apprentice;
+use App\Models\Environment;
 
 class CourseController extends Controller
 {
@@ -22,10 +23,14 @@ class CourseController extends Controller
     return view('course.show', compact('course'));
     }
     
+
+    // Pasa los ambientes disponibles al formulario de creación
     public function create(){
         $areas           = Area::all();
         $trainingCenters = Training_center::all();
-        return view('course.create', compact('areas', 'trainingCenters'));
+        $environments    = Environment::all();
+        
+        return view('course.create', compact('areas', 'trainingCenters', 'environments'));
     }
 
     public function store(Request $request){
@@ -34,9 +39,13 @@ class CourseController extends Controller
         $course->day                = $request->day;
         $course->area_id            = $request->area_id;
         $course->training_center_id = $request->training_center_id;
+        // Guarda el ambiente seleccionado
+        $course->environment_id = $request->environment_id;
         $course->save();
         return redirect()->route('course.index')->with('success', 'Curso creado correctamente');
     }
+
+    // Pasa los ambientes disponibles al formulario de edición
     public function edit(Course $course)
     {
     return view('course.edit', [
@@ -44,6 +53,7 @@ class CourseController extends Controller
         'areas'           => Area::all(),
         'trainingCenters' => Training_center::all(),
         'teachers'        => Teacher::all(),
+        'environments'    => Environment::all(),
     ]);
     }
 
@@ -54,6 +64,8 @@ class CourseController extends Controller
         'day'                 => 'required|date',
         'area_id'             => 'nullable|exists:areas,id',
         'training_center_id'  => 'nullable|exists:training_centers,id',
+        // Valida que el ambiente exista si se selecciona uno
+        'environment_id'      => 'nullable|exists:environments,id',
     ]);
     $course->update($data);
     return redirect()->route('course.create')

@@ -34,6 +34,16 @@
     <div class="col-md-4 mb-4">
         <div class="card shadow-sm">
             <div class="card-body">
+                <i class="fas fa-door-open fa-3x mb-3" style="color: #3DAE2B;"></i>
+                <h5 class="card-title">Ambientes</h5>
+                <p class="card-text">Gestiona los ambientes de formación.</p>
+                <a href="/environment" class="btn btn-success">Ver Ambientes</a>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-4 mb-4">
+        <div class="card shadow-sm">
+            <div class="card-body">
                 <i class="fas fa-desktop fa-3x mb-3" style="color: #3DAE2B;"></i>
                 <h5 class="card-title">Computadores</h5>
                 <p class="card-text">Gestiona los equipos disponibles.</p>

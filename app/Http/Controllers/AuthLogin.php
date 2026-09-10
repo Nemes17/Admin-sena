@@ -32,9 +32,9 @@ class AuthLogin extends Controller
             if ($rol === 'admin') {
                 return redirect()->intended('/administrative'); 
             } elseif ($rol === 'instructor') {
-                return redirect()->intended('/teacher'); 
+                return redirect()->intended('/teacher/home'); 
             } else {
-                return redirect()->intended('/apprentice'); 
+                return redirect()->intended('/apprentice/home'); 
             }
         }
 

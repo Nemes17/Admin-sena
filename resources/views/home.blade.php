@@ -10,6 +10,8 @@
     <hr>
 </div>
 
+@include('includes.Carousel')
+
 <div class="row text-center mt-4">
     <div class="col-md-4 mb-4">
         <div class="card shadow-sm">
@@ -38,6 +40,16 @@
                 <h5 class="card-title">Ambientes</h5>
                 <p class="card-text">Gestiona los ambientes de formación.</p>
                 <a href="/environment" class="btn btn-success">Ver Ambientes</a>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-4 mb-4">
+        <div class="card shadow-sm">
+            <div class="card-body">
+                <i class="fas fa-graduation-cap fa-3x mb-3" style="color: #3DAE2B;"></i>
+                <h5 class="card-title">Ofertas</h5>
+                <p class="card-text">Gestiona los programas ofertados (Técnicos y Tecnólogos).</p>
+                <a href="/offer" class="btn btn-success">Ver Ofertas</a>
             </div>
         </div>
     </div>

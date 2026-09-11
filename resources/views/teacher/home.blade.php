@@ -12,6 +12,8 @@
     <hr>
 </div>
 
+@include('includes.Carousel')
+
 @if(!$teacher)
     <div class="alert alert-warning text-center">
         Tu usuario aún no está vinculado a un registro de Instructor. Contacta al administrador.
@@ -19,7 +21,7 @@
 @else
 <div class="row text-center mt-4">
     <div class="col-md-4 mb-4">
-        <div class="card shadow-sm">
+        <div class="card shadow-sm">  
             <div class="card-body">
                 <i class="fas fa-map-marker-alt fa-3x mb-3" style="color: #3DAE2B;"></i>
                 <h5 class="card-title">Área</h5>

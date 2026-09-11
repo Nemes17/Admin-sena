@@ -26,4 +26,17 @@ class Course extends Model
     public function environment(){
         return $this->belongsTo('App\Models\Environment');
     }
+
+    // Un curso/ficha pertenece a una oferta (programa)
+    public function offer(){
+        return $this->belongsTo('App\Models\Offer');
+    }
+
+    // Cupos disponibles = cupo total menos aprendices ya inscritos (null = sin límite)
+    public function cuposDisponibles(){
+        if (is_null($this->quota)) {
+            return null;
+        }
+        return max(0, $this->quota - $this->apprentices()->count());
+    }
 }

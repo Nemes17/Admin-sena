@@ -9,6 +9,7 @@ use App\Http\Controllers\CourseController;
 use App\Http\Controllers\ApprenticeController;
 use App\Http\Controllers\CourseTeacherController;
 use App\Http\Controllers\EnvironmentController;
+use App\Http\Controllers\OfferController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\AuthLogin;
 use App\Http\Controllers\AdministrativeController;
@@ -90,6 +91,10 @@ Route::middleware('auth')->group(function () {
     Route::delete('/course/{course}', [CourseController::class, 'destroy'])->name('course.destroy');
 
     // Apprentices
+    // Estas rutas van ANTES de /apprentice/{id} para que "ofertas" no sea interpretado como un id
+    Route::get('/apprentice/ofertas', [ApprenticeController::class, 'ofertas'])->name('apprentice.ofertas');
+    Route::post('/apprentice/inscribirse/{course}', [ApprenticeController::class, 'inscribirse'])->name('apprentice.inscribirse');
+    Route::post('/apprentice/retirarme', [ApprenticeController::class, 'retirarme'])->name('apprentice.retirarme');
     Route::get('/apprentice/create', [ApprenticeController::class, 'create'])->name('apprentice.create');
     Route::post('/apprentice/store', [ApprenticeController::class, 'store'])->name('apprentice.store');
     Route::get('/apprentice', [ApprenticeController::class, 'index'])->name('apprentice.index');
@@ -106,6 +111,15 @@ Route::middleware('auth')->group(function () {
     Route::get('/environment/{environment}/edit', [EnvironmentController::class, 'edit']);
     Route::put('/environment/{environment}', [EnvironmentController::class, 'update'])->name('environment.update');
     Route::delete('/environment/{environment}', [EnvironmentController::class, 'destroy'])->name('environment.destroy');
+
+    // Ofertas (programas / catálogo)
+    Route::get('/offer/create', [OfferController::class, 'create'])->name('offer.create');
+    Route::post('/offer/store', [OfferController::class, 'store'])->name('offer.store');
+    Route::get('/offer', [OfferController::class, 'index'])->name('offer.index');
+    Route::get('/offer/{id}', [OfferController::class, 'show']);
+    Route::get('/offer/{offer}/edit', [OfferController::class, 'edit']);
+    Route::put('/offer/{offer}', [OfferController::class, 'update'])->name('offer.update');
+    Route::delete('/offer/{offer}', [OfferController::class, 'destroy'])->name('offer.destroy');
 
     // Course_teacher
     Route::get('/course_teacher', [CourseTeacherController::class, 'index'])->name('course_teacher.index');

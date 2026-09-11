@@ -9,8 +9,11 @@
         Bienvenido{{ $apprentice ? ', '.$apprentice->name : '' }}
     </h1>
     <p class="lead text-muted">Panel del Aprendiz</p>
+    <a href="{{ route('apprentice.ofertas') }}" class="btn btn-success mt-2">Ver Ofertas Disponibles</a>
     <hr>
 </div>
+
+@include('includes.Carousel')
 
 @if(!$apprentice)
     <div class="alert alert-warning text-center">

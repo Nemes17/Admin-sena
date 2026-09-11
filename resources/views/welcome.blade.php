@@ -612,6 +612,13 @@
         </section>
 
 
+        <!-- CARRUSEL INSTITUCIONAL -->
+
+        <section class="container py-4">
+            @include('includes.Carousel')
+        </section>
+
+
         <!-- MÓDULOS -->
 
         <section class="container modules-section">

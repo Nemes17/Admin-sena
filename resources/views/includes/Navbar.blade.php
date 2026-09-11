@@ -22,6 +22,9 @@
                     <li class="nav-item">
                         <a class="nav-link text-white" href="{{ route('apprentice.home') }}">Home</a>
                     </li>
+                    <li class="nav-item">
+                        <a class="nav-link text-white" href="{{ route('apprentice.ofertas') }}">Ofertas</a>
+                    </li>
                 @else
                 <li class="nav-item">
                     <a class="nav-link text-white" href="{{ route('administrative.home') }}">Home</a>
@@ -33,6 +36,7 @@
                         <li><a class="dropdown-item" href="/area/create">Área</a></li>
                         <li><a class="dropdown-item" href="/training_center/create">Centro de Formación</a></li>
                         <li><a class="dropdown-item" href="/environment/create">Ambiente</a></li>
+                        <li><a class="dropdown-item" href="/offer/create">Oferta</a></li>
                         <li><a class="dropdown-item" href="/computer/create">Computador</a></li>
                         <li><a class="dropdown-item" href="/course/create">Curso</a></li>
                         <li><a class="dropdown-item" href="/teacher/create">Instructor</a></li>
@@ -48,6 +52,7 @@
                         <li><a class="dropdown-item" href="/area">Ver Áreas</a></li>
                         <li><a class="dropdown-item" href="/training_center">Ver Centros</a></li>
                         <li><a class="dropdown-item" href="/environment">Ver Ambientes</a></li>
+                        <li><a class="dropdown-item" href="/offer">Ver Ofertas</a></li>
                         <li><a class="dropdown-item" href="/computer">Ver Computadores</a></li>
                         <li><a class="dropdown-item" href="/course">Ver Cursos</a></li>
                         <li><a class="dropdown-item" href="/teacher">Ver Instructores</a></li>

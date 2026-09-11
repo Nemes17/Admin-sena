@@ -62,6 +62,25 @@
     </select>
     <br><br>
 
+    <label for="offer_id">Oferta (Programa)</label>
+    <select name="offer_id" class="form-control">
+        <option value="">-- Seleccionar Oferta --</option>
+        @foreach($offers as $offer)
+            <option value="{{ $offer->id }}"
+                {{ $course->offer_id == $offer->id ? 'selected' : '' }}>
+                {{ $offer->name }} ({{ $offer->level === 'tecnologo' ? 'Tecnólogo' : 'Técnico' }})
+            </option>
+        @endforeach
+    </select>
+    <br>
+
+    <label>Cupo máximo de aprendices:
+        <br>
+        <input type="number" min="0" name="quota" class="form-control"
+               value="{{ $course->quota }}">
+    </label>
+    <br><br>
+
     <button type="submit" class="btn btn-warning"
             onclick="this.disabled=true; this.form.submit();">
         Actualizar Curso

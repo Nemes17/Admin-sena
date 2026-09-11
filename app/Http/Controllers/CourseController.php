@@ -9,6 +9,7 @@ use App\Models\Training_center;
 use App\Models\Teacher;
 use App\Models\Apprentice;
 use App\Models\Environment;
+use App\Models\Offer;
 
 class CourseController extends Controller
 {
@@ -25,12 +26,15 @@ class CourseController extends Controller
     
 
     // Pasa los ambientes disponibles al formulario de creación
+    // Pasa los ambientes y ofertas disponibles al formulario de creación
     public function create(){
         $areas           = Area::all();
         $trainingCenters = Training_center::all();
         $environments    = Environment::all();
         
         return view('course.create', compact('areas', 'trainingCenters', 'environments'));
+        $offers          = Offer::all();
+        return view('course.create', compact('areas', 'trainingCenters', 'environments', 'offers'));
     }
 
     public function store(Request $request){
@@ -41,11 +45,15 @@ class CourseController extends Controller
         $course->training_center_id = $request->training_center_id;
         // Guarda el ambiente seleccionado
         $course->environment_id = $request->environment_id;
+        // Guarda la oferta y el cupo seleccionados
+        $course->offer_id = $request->offer_id;
+        $course->quota    = $request->quota;
         $course->save();
         return redirect()->route('course.index')->with('success', 'Curso creado correctamente');
     }
 
     // Pasa los ambientes disponibles al formulario de edición
+    // Pasa los ambientes y ofertas disponibles al formulario de edición
     public function edit(Course $course)
     {
     return view('course.edit', [
@@ -54,6 +62,7 @@ class CourseController extends Controller
         'trainingCenters' => Training_center::all(),
         'teachers'        => Teacher::all(),
         'environments'    => Environment::all(),
+        'offers'          => Offer::all(),
     ]);
     }
 
@@ -66,6 +75,9 @@ class CourseController extends Controller
         'training_center_id'  => 'nullable|exists:training_centers,id',
         // Valida que el ambiente exista si se selecciona uno
         'environment_id'      => 'nullable|exists:environments,id',
+        // Valida que la oferta exista y el cupo sea un entero positivo
+        'offer_id'            => 'nullable|exists:offers,id',
+        'quota'               => 'nullable|integer|min:0',
     ]);
     $course->update($data);
     return redirect()->route('course.create')

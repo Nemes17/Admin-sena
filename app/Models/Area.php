@@ -17,4 +17,9 @@ class Area extends Model
     public function courses(){
         return $this->hasMany('App\Models\Course');
     }
+
+    // Un área puede tener varias ofertas de programas
+    public function offers(){
+        return $this->hasMany('App\Models\Offer');
+    }
 }

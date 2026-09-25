@@ -57,6 +57,7 @@
             <th>Fecha</th>
             <th>Área</th>
             <th>Centro de Formación</th>
+            <th>Acciones</th>
         </tr>
     </thead>
     <tbody>
@@ -66,9 +67,14 @@
             <td>{{ $course->day }}</td>
             <td>{{ $course->area->name ?? '-' }}</td>
             <td>{{ $course->training_center->name ?? '-' }}</td>
+            <td>
+                <a href="{{ route('attendance.create', $course->id) }}" class="btn btn-success btn-sm">
+                    Tomar Asistencia
+                </a>
+            </td>
         </tr>
         @empty
-        <tr><td colspan="4" class="text-center text-muted">No tienes cursos asignados aún.</td></tr>
+        <tr><td colspan="5" class="text-center text-muted">No tienes cursos asignados aún.</td></tr>
         @endforelse
     </tbody>
 </table>

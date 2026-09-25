@@ -39,4 +39,9 @@ class Course extends Model
         }
         return max(0, $this->quota - $this->apprentices()->count());
     }
+
+    // Registros de asistencia tomados en este curso
+    public function attendances(){
+        return $this->hasMany('App\Models\Attendance');
+    }
 }

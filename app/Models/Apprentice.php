@@ -20,4 +20,9 @@ class Apprentice extends Model
     public function user(){
         return $this->belongsTo('App\Models\User');
     }
+
+    // Historial de asistencia de este aprendiz
+    public function attendances(){
+        return $this->hasMany('App\Models\Attendance');
+    }
 }

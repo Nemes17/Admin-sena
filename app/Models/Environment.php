@@ -25,4 +25,9 @@ class Environment extends Model
     public function courses(){
         return $this->hasMany('App\Models\Course');
     }
+
+    // Novedades reportadas sobre este ambiente
+    public function incidents(){
+        return $this->hasMany('App\Models\Incident');
+    }
 }

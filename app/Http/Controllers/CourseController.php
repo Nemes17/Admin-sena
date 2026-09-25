@@ -31,9 +31,8 @@ class CourseController extends Controller
         $areas           = Area::all();
         $trainingCenters = Training_center::all();
         $environments    = Environment::all();
-        
-        return view('course.create', compact('areas', 'trainingCenters', 'environments'));
         $offers          = Offer::all();
+        
         return view('course.create', compact('areas', 'trainingCenters', 'environments', 'offers'));
     }
 

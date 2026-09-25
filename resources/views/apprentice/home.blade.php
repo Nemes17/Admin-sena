@@ -10,6 +10,7 @@
     </h1>
     <p class="lead text-muted">Panel del Aprendiz</p>
     <a href="{{ route('apprentice.ofertas') }}" class="btn btn-success mt-2">Ver Ofertas Disponibles</a>
+    <a href="{{ route('apprentice.attendance') }}" class="btn btn-outline-success mt-2">Ver Mi Asistencia</a>
     <hr>
 </div>
 

@@ -18,6 +18,9 @@
                     <li class="nav-item">
                         <a class="nav-link text-white" href="{{ route('teacher.home') }}">Home</a>
                     </li>
+                    <li class="nav-item">
+                        <a class="nav-link text-white" href="{{ route('incident.index') }}">Novedades</a>
+                    </li>
                 @elseif($rol === 'aprendiz')
                     <li class="nav-item">
                         <a class="nav-link text-white" href="{{ route('apprentice.home') }}">Home</a>
@@ -25,9 +28,18 @@
                     <li class="nav-item">
                         <a class="nav-link text-white" href="{{ route('apprentice.ofertas') }}">Ofertas</a>
                     </li>
+                    <li class="nav-item">
+                        <a class="nav-link text-white" href="{{ route('apprentice.attendance') }}">Mi Asistencia</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link text-white" href="{{ route('incident.index') }}">Novedades</a>
+                    </li>
                 @else
                 <li class="nav-item">
                     <a class="nav-link text-white" href="{{ route('administrative.home') }}">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link text-white" href="{{ route('incident.index') }}">Novedades</a>
                 </li>
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle text-white" href="#"

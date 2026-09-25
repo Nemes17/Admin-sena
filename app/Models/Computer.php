@@ -19,4 +19,9 @@ class Computer extends Model
     public function apprentices(){
         return $this->hasMany('App\Models\Apprentice');
     }
+
+    // Novedades reportadas sobre este computador
+    public function incidents(){
+        return $this->hasMany('App\Models\Incident');
+    }
 }

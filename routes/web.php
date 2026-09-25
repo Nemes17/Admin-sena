@@ -10,6 +10,8 @@ use App\Http\Controllers\ApprenticeController;
 use App\Http\Controllers\CourseTeacherController;
 use App\Http\Controllers\EnvironmentController;
 use App\Http\Controllers\OfferController;
+use App\Http\Controllers\AttendanceController;
+use App\Http\Controllers\IncidentController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\AuthLogin;
 use App\Http\Controllers\AdministrativeController;
@@ -95,6 +97,7 @@ Route::middleware('auth')->group(function () {
     Route::get('/apprentice/ofertas', [ApprenticeController::class, 'ofertas'])->name('apprentice.ofertas');
     Route::post('/apprentice/inscribirse/{course}', [ApprenticeController::class, 'inscribirse'])->name('apprentice.inscribirse');
     Route::post('/apprentice/retirarme', [ApprenticeController::class, 'retirarme'])->name('apprentice.retirarme');
+    Route::get('/apprentice/attendance', [AttendanceController::class, 'historial'])->name('apprentice.attendance');
     Route::get('/apprentice/create', [ApprenticeController::class, 'create'])->name('apprentice.create');
     Route::post('/apprentice/store', [ApprenticeController::class, 'store'])->name('apprentice.store');
     Route::get('/apprentice', [ApprenticeController::class, 'index'])->name('apprentice.index');
@@ -102,6 +105,10 @@ Route::middleware('auth')->group(function () {
     Route::get('/apprentice/{apprentice}/edit', [ApprenticeController::class, 'edit']);
     Route::put('/apprentice/{apprentice}', [ApprenticeController::class, 'update'])->name('apprentice.update');
     Route::delete('/apprentice/{apprentice}', [ApprenticeController::class, 'destroy'])->name('apprentice.destroy');
+
+    // Asistencia (el instructor toma asistencia de un curso puntual)
+    Route::get('/teacher/attendance/{course}', [AttendanceController::class, 'create'])->name('attendance.create');
+    Route::post('/teacher/attendance/{course}', [AttendanceController::class, 'store'])->name('attendance.store');
 
     // CRUD de Ambientes
     Route::get('/environment/create', [EnvironmentController::class, 'create'])->name('environment.create');
@@ -120,6 +127,12 @@ Route::middleware('auth')->group(function () {
     Route::get('/offer/{offer}/edit', [OfferController::class, 'edit']);
     Route::put('/offer/{offer}', [OfferController::class, 'update'])->name('offer.update');
     Route::delete('/offer/{offer}', [OfferController::class, 'destroy'])->name('offer.destroy');
+
+    // Bitácora de Novedades (Ambientes/Computadores)
+    Route::get('/incident/create', [IncidentController::class, 'create'])->name('incident.create');
+    Route::post('/incident/store', [IncidentController::class, 'store'])->name('incident.store');
+    Route::get('/incident', [IncidentController::class, 'index'])->name('incident.index');
+    Route::put('/incident/{incident}/resolve', [IncidentController::class, 'resolve'])->name('incident.resolve');
 
     // Course_teacher
     Route::get('/course_teacher', [CourseTeacherController::class, 'index'])->name('course_teacher.index');

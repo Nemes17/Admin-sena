@@ -13,6 +13,8 @@ return new class extends Migration
             $table->string('name');
             $table->enum('level', ['tecnico', 'tecnologo']);
             $table->text('description')->nullable();
+            $table->integer('duration_months')->nullable();
+            $table->enum('status', ['abierta', 'cerrada'])->default('abierta');
 
             // Clave foránea hacia el área de formación
             $table->unsignedBigInteger('area_id')->nullable();
@@ -21,11 +23,9 @@ return new class extends Migration
             ->on('areas')
             ->onDelete('set null')
             ->onUpdate('cascade');
-
-            $table->integer('duration_months')->nullable();
-            $table->enum('status', ['abierta', 'cerrada'])->default('abierta');
-
+            
             $table->timestamps();
+            
         });
     }
 

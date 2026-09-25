@@ -9,21 +9,21 @@
 
     <div class="carousel-inner rounded-4 overflow-hidden">
         <div class="carousel-item active">
-            <img src="{{ asset('images/carousel/sena-1.jpg') }}" class="d-block w-100 sena-carousel-img" alt="Formación SENA">
+            <img src="{{ asset('Images/sena-1.png') }}" class="d-block w-100 sena-carousel-img" alt="Formación SENA">
             <div class="carousel-caption d-none d-md-block">
                 <h5>Formación para el trabajo</h5>
                 <p>Ambientes equipados con tecnología de punta.</p>
             </div>
         </div>
         <div class="carousel-item">
-            <img src="{{ asset('images/carousel/sena-2.jpg') }}" class="d-block w-100 sena-carousel-img" alt="Aprendices SENA">
+            <img src="{{ asset('Images/sena-2.png') }}" class="d-block w-100 sena-carousel-img" alt="Aprendices SENA">
             <div class="carousel-caption d-none d-md-block">
                 <h5>Aprendices SENA</h5>
                 <p>Miles de jóvenes formándose cada año en todo el país.</p>
             </div>
         </div>
         <div class="carousel-item">
-            <img src="{{ asset('images/carousel/sena-3.jpg') }}" class="d-block w-100 sena-carousel-img" alt="Centros de Formación SENA">
+            <img src="{{ asset('Images/sena-3.png') }}" class="d-block w-100 sena-carousel-img" alt="Centros de Formación SENA">
             <div class="carousel-caption d-none d-md-block">
                 <h5>Centros de Formación</h5>
                 <p>Cobertura nacional con instructores especializados.</p>

@@ -71,6 +71,9 @@
                 <a href="{{ route('attendance.create', $course->id) }}" class="btn btn-success btn-sm">
                     Tomar Asistencia
                 </a>
+                <a href="{{ route('teacher.apprentices', $course->id) }}" class="btn btn-outline-success btn-sm">
+                    Ver Aprendices
+                </a>
             </td>
         </tr>
         @empty

@@ -25,7 +25,6 @@ class CourseController extends Controller
     }
     
 
-    // Pasa los ambientes disponibles al formulario de creación
     // Pasa los ambientes y ofertas disponibles al formulario de creación
     public function create(){
         $areas           = Area::all();
@@ -51,7 +50,6 @@ class CourseController extends Controller
         return redirect()->route('course.index')->with('success', 'Curso creado correctamente');
     }
 
-    // Pasa los ambientes disponibles al formulario de edición
     // Pasa los ambientes y ofertas disponibles al formulario de edición
     public function edit(Course $course)
     {

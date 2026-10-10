@@ -7,6 +7,7 @@ use App\Models\Teacher;
 use App\Models\Area;
 use App\Models\Training_center;
 use App\Models\Course;
+use App\Models\Apprentice;
 use Illuminate\Support\Facades\Auth;
 
 
@@ -21,6 +22,20 @@ class TeacherController extends Controller
             : collect();
 
         return view('teacher.home', compact('teacher', 'courses'));
+    }
+
+    // Lista los aprendices matriculados en un curso que dicta el instructor autenticado
+    public function misAprendices(Course $course){
+        $teacher = Teacher::where('user_id', Auth::id())->first();
+
+        // Seguridad: solo el instructor asignado a este curso puede ver la lista
+        if (!$teacher || !$teacher->courses->contains($course->id)) {
+            abort(403, 'No tienes permiso para ver los aprendices de este curso.');
+        }
+
+        $apprentices = Apprentice::where('course_id', $course->id)->with('computer')->get();
+
+        return view('teacher.students', compact('course', 'apprentices'));
     }
 
     public function index(){

@@ -109,6 +109,7 @@ Route::middleware('auth')->group(function () {
     // Asistencia (el instructor toma asistencia de un curso puntual)
     Route::get('/teacher/attendance/{course}', [AttendanceController::class, 'create'])->name('attendance.create');
     Route::post('/teacher/attendance/{course}', [AttendanceController::class, 'store'])->name('attendance.store');
+    Route::get('/teacher/course/{course}/apprentices', [TeacherController::class, 'misAprendices'])->name('teacher.apprentices');
 
     // CRUD de Ambientes
     Route::get('/environment/create', [EnvironmentController::class, 'create'])->name('environment.create');

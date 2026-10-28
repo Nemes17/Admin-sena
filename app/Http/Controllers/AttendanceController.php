@@ -49,7 +49,7 @@ class AttendanceController extends Controller
         ]);
 
         foreach ($data['status'] as $apprenticeId => $status) {
-            // updateOrCreate evita duplicar el registro si ya se tomó asistencia ese día
+           
             Attendance::updateOrCreate(
                 [
                     'course_id'     => $course->id,
@@ -66,7 +66,7 @@ class AttendanceController extends Controller
                          ->with('success', 'Asistencia guardada correctamente.');
     }
 
-    // Historial de asistencia del aprendiz autenticado
+    
     public function historial(){
         $apprentice = Apprentice::where('user_id', Auth::id())->first();
 

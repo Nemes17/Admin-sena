@@ -28,7 +28,7 @@ class ComputerController extends Controller
         $data = $request->validate([
             'brand'          => 'required|string|max:255',
             'number'         => 'required|integer',
-            'environment_id' => 'nullable|exists:environments,id',
+            'environment_id' => 'nullable',
         ]);
 
         return response()->json(Computer::create($data), 201);
@@ -39,7 +39,7 @@ class ComputerController extends Controller
         $data = $request->validate([
             'brand'          => 'required|string|max:255',
             'number'         => 'required|integer',
-            'environment_id' => 'nullable|exists:environments,id',
+            'environment_id' => 'nullable',
         ]);
 
         $computer->update($data);

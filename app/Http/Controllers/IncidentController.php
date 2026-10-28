@@ -10,7 +10,7 @@ use Illuminate\Support\Facades\Auth;
 
 class IncidentController extends Controller
 {
-    // Lista de novedades: el admin ve todas, instructor/aprendiz solo las que reportó
+    
     public function index(){
         $rol = Auth::user()->rol;
 
@@ -21,14 +21,14 @@ class IncidentController extends Controller
         return view('incident.index', compact('incidents', 'rol'));
     }
 
-    // Muestra el formulario para reportar una nueva novedad
+    
     public function create(){
         $environments = Environment::all();
         $computers    = Computer::all();
         return view('incident.create', compact('environments', 'computers'));
     }
 
-    // Guarda la novedad reportada por el usuario autenticado
+    
     public function store(Request $request){
         $data = $request->validate([
             'environment_id' => 'nullable|exists:environments,id',
@@ -36,7 +36,7 @@ class IncidentController extends Controller
             'description'    => 'required|string|max:1000',
         ]);
 
-        // Debe reportarse la novedad sobre al menos un ambiente o un computador
+        
         if (empty($data['environment_id']) && empty($data['computer_id'])) {
             return back()->withInput()->with('error', 'Selecciona al menos un Ambiente o un Computador.');
         }
@@ -52,7 +52,7 @@ class IncidentController extends Controller
         return redirect()->route('incident.index')->with('success', 'Novedad reportada correctamente.');
     }
 
-    // Solo un administrativo puede marcar una novedad como resuelta
+   
     public function resolve(Incident $incident){
         if (Auth::user()->rol !== 'admin') {
             abort(403, 'Solo un administrativo puede resolver novedades.');

@@ -36,7 +36,7 @@ class ComputerController extends Controller
                          ->with('success', 'Computador creado correctamente');
     }
 
-    // Muestra el formulario de edición con los ambientes disponibles
+    
     public function edit(Computer $computer)
     {
     return view('computer.edit', [

@@ -16,15 +16,8 @@ use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\AuthLogin;
 use App\Http\Controllers\AdministrativeController;
 
-/*
-|--------------------------------------------------------------------------
-| Web Routes
-|--------------------------------------------------------------------------
-*/
 
-// ==========================================
-// 1. RUTAS PÚBLICAS (No requieren sesión)
-// ==========================================
+
 Route::get('/', function () { return view('welcome');})->name('welcome');
 
 // Rutas de Autenticación
@@ -33,15 +26,13 @@ Route::post('/login', [AuthLogin::class, 'login']);
 Route::post('/logout', [AuthLogin::class, 'logout'])->name('logout');
 
 
-// ==========================================
-// 2. RUTAS PROTEGIDAS (Requieren iniciar sesión)
-// ==========================================
+
 Route::middleware('auth')->group(function () {
     
-    // El Home del Administrador
+  
     Route::get('/administrative', [AdministrativeController::class, 'index'])->name('administrative.home');
 
-    // Paneles personalizados por rol (deben ir ANTES de las rutas con {id})
+    
     Route::get('/teacher/home', [TeacherController::class, 'home'])->name('teacher.home');
     Route::get('/apprentice/home', [ApprenticeController::class, 'home'])->name('apprentice.home');
     
@@ -93,7 +84,6 @@ Route::middleware('auth')->group(function () {
     Route::delete('/course/{course}', [CourseController::class, 'destroy'])->name('course.destroy');
 
     // Apprentices
-    // Estas rutas van ANTES de /apprentice/{id} para que "ofertas" no sea interpretado como un id
     Route::get('/apprentice/ofertas', [ApprenticeController::class, 'ofertas'])->name('apprentice.ofertas');
     Route::post('/apprentice/inscribirse/{course}', [ApprenticeController::class, 'inscribirse'])->name('apprentice.inscribirse');
     Route::post('/apprentice/retirarme', [ApprenticeController::class, 'retirarme'])->name('apprentice.retirarme');
@@ -106,12 +96,12 @@ Route::middleware('auth')->group(function () {
     Route::put('/apprentice/{apprentice}', [ApprenticeController::class, 'update'])->name('apprentice.update');
     Route::delete('/apprentice/{apprentice}', [ApprenticeController::class, 'destroy'])->name('apprentice.destroy');
 
-    // Asistencia (el instructor toma asistencia de un curso puntual)
+    
     Route::get('/teacher/attendance/{course}', [AttendanceController::class, 'create'])->name('attendance.create');
     Route::post('/teacher/attendance/{course}', [AttendanceController::class, 'store'])->name('attendance.store');
     Route::get('/teacher/course/{course}/apprentices', [TeacherController::class, 'misAprendices'])->name('teacher.apprentices');
 
-    // CRUD de Ambientes
+    // Ambientes
     Route::get('/environment/create', [EnvironmentController::class, 'create'])->name('environment.create');
     Route::post('/environment/store', [EnvironmentController::class, 'store'])->name('environment.store');
     Route::get('/environment', [EnvironmentController::class, 'index'])->name('environment.index');
@@ -120,7 +110,7 @@ Route::middleware('auth')->group(function () {
     Route::put('/environment/{environment}', [EnvironmentController::class, 'update'])->name('environment.update');
     Route::delete('/environment/{environment}', [EnvironmentController::class, 'destroy'])->name('environment.destroy');
 
-    // Ofertas (programas / catálogo)
+    // Ofertas
     Route::get('/offer/create', [OfferController::class, 'create'])->name('offer.create');
     Route::post('/offer/store', [OfferController::class, 'store'])->name('offer.store');
     Route::get('/offer', [OfferController::class, 'index'])->name('offer.index');
@@ -129,7 +119,7 @@ Route::middleware('auth')->group(function () {
     Route::put('/offer/{offer}', [OfferController::class, 'update'])->name('offer.update');
     Route::delete('/offer/{offer}', [OfferController::class, 'destroy'])->name('offer.destroy');
 
-    // Bitácora de Novedades (Ambientes/Computadores)
+    // Bitácora de Novedades 
     Route::get('/incident/create', [IncidentController::class, 'create'])->name('incident.create');
     Route::post('/incident/store', [IncidentController::class, 'store'])->name('incident.store');
     Route::get('/incident', [IncidentController::class, 'index'])->name('incident.index');

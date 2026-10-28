@@ -13,8 +13,7 @@ use Illuminate\Support\Facades\Auth;
 
 class TeacherController extends Controller
 {
-    //
-    // Muestra el panel personalizado del instructor autenticado
+   
     public function home(){
         $teacher = Teacher::where('user_id', Auth::id())->first();
         $courses = $teacher
@@ -24,11 +23,11 @@ class TeacherController extends Controller
         return view('teacher.home', compact('teacher', 'courses'));
     }
 
-    // Lista los aprendices matriculados en un curso que dicta el instructor autenticado
+    
     public function misAprendices(Course $course){
         $teacher = Teacher::where('user_id', Auth::id())->first();
 
-        // Seguridad: solo el instructor asignado a este curso puede ver la lista
+        
         if (!$teacher || !$teacher->courses->contains($course->id)) {
             abort(403, 'No tienes permiso para ver los aprendices de este curso.');
         }

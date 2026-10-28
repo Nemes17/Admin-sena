@@ -12,7 +12,7 @@ use Illuminate\Support\Facades\Auth;
 class ApprenticeController extends Controller
 {
     //
-    // Muestra el panel personalizado del aprendiz autenticado
+    
     public function home(){
         $apprentice = Apprentice::with('course.area', 'course.training_center', 'computer')
             ->where('user_id', Auth::id())
@@ -21,7 +21,7 @@ class ApprenticeController extends Controller
         return view('apprentice.home', compact('apprentice'));
     }
 
-    // Catálogo de ofertas (programas) abiertas para que el aprendiz vea y se inscriba
+    
     public function ofertas(){
         $apprentice = Apprentice::where('user_id', Auth::id())->first();
 
@@ -32,7 +32,7 @@ class ApprenticeController extends Controller
         return view('apprentice.ofertas', compact('offers', 'apprentice'));
     }
 
-    // Inscribe al aprendiz autenticado en una ficha (curso) puntual de una oferta
+    
     public function inscribirse(Course $course){
         $apprentice = Apprentice::where('user_id', Auth::id())->first();
 
@@ -40,12 +40,12 @@ class ApprenticeController extends Controller
             return back()->with('error', 'Tu usuario aún no está vinculado a un registro de Aprendiz.');
         }
 
-        // Regla de negocio: solo se puede estar inscrito en un curso a la vez
+        
         if ($apprentice->course_id) {
             return back()->with('error', 'Ya estás inscrito en un curso. Debes retirarte antes de inscribirte a otro.');
         }
 
-        // Regla de negocio: respetar el cupo máximo de la ficha
+        
         $cupos = $course->cuposDisponibles();
         if (!is_null($cupos) && $cupos <= 0) {
             return back()->with('error', 'Esta ficha ya no tiene cupos disponibles.');
@@ -57,7 +57,7 @@ class ApprenticeController extends Controller
         return redirect()->route('apprentice.home')->with('success', 'Te inscribiste correctamente al curso.');
     }
 
-    // Permite al aprendiz retirarse de su curso actual, para poder inscribirse a otro
+    
     public function retirarme(){
         $apprentice = Apprentice::where('user_id', Auth::id())->first();
 

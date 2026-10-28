@@ -25,7 +25,6 @@ class CourseController extends Controller
     }
     
 
-    // Pasa los ambientes y ofertas disponibles al formulario de creación
     public function create(){
         $areas           = Area::all();
         $trainingCenters = Training_center::all();
@@ -41,16 +40,14 @@ class CourseController extends Controller
         $course->day                = $request->day;
         $course->area_id            = $request->area_id;
         $course->training_center_id = $request->training_center_id;
-        // Guarda el ambiente seleccionado
         $course->environment_id = $request->environment_id;
-        // Guarda la oferta y el cupo seleccionados
         $course->offer_id = $request->offer_id;
         $course->quota    = $request->quota;
         $course->save();
         return redirect()->route('course.index')->with('success', 'Curso creado correctamente');
     }
 
-    // Pasa los ambientes y ofertas disponibles al formulario de edición
+    
     public function edit(Course $course)
     {
     return view('course.edit', [
@@ -70,9 +67,7 @@ class CourseController extends Controller
         'day'                 => 'required|date',
         'area_id'             => 'nullable|exists:areas,id',
         'training_center_id'  => 'nullable|exists:training_centers,id',
-        // Valida que el ambiente exista si se selecciona uno
         'environment_id'      => 'nullable|exists:environments,id',
-        // Valida que la oferta exista y el cupo sea un entero positivo
         'offer_id'            => 'nullable|exists:offers,id',
         'quota'               => 'nullable|integer|min:0',
     ]);

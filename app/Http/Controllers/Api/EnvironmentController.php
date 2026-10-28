@@ -8,9 +8,7 @@ use Illuminate\Http\Request;
 
 class EnvironmentController extends Controller
 {
-    //
-
-     public function consulta1()
+    public function consulta1()
     {
         return response()->json(Environment::with(['training_center', 'computers'])->get());
     }
@@ -30,7 +28,7 @@ class EnvironmentController extends Controller
         $data = $request->validate([
             'name'               => 'required|string|max:255',
             'capacity'           => 'nullable|integer',
-            'training_center_id' => 'nullable|exists:training_centers,id',
+            'training_center_id' => 'nullable',
         ]);
 
         return response()->json(Environment::create($data), 201);
@@ -41,7 +39,7 @@ class EnvironmentController extends Controller
         $data = $request->validate([
             'name'               => 'required|string|max:255',
             'capacity'           => 'nullable|integer',
-            'training_center_id' => 'nullable|exists:training_centers,id',
+            'training_center_id' => 'nullable',
         ]);
 
         $environment->update($data);
@@ -55,5 +53,4 @@ class EnvironmentController extends Controller
 
         return response()->json(['message' => 'Ambiente eliminado correctamente']);
     }
-    
 }

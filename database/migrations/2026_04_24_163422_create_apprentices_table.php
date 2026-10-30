@@ -24,7 +24,6 @@ return new class extends Migration
             ->onDelete('set null')
             ->onUpdate('cascade');
 
-
             $table->unsignedBigInteger('computer_id')->nullable()->unique();
             $table->foreign('computer_id')
             ->references('id')

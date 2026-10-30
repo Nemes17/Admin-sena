@@ -26,34 +26,14 @@ class CourseController extends Controller
 
     public function store(Request $request)
     {
-        $data = $request->validate([
-            'course_number'      => 'required|integer',
-            'day'                => 'required',
-            'area_id'            => 'nullable',
-            'training_center_id' => 'nullable',
-            'environment_id'     => 'nullable',
-            'offer_id'           => 'nullable',
-            'quota'              => 'nullable|integer',
-        ]);
-
-        $course = Course::create($data);
+        $course = Course::create($request->all());
 
         return response()->json($course, 201);
     }
 
     public function update(Request $request, Course $course)
     {
-        $data = $request->validate([
-            'course_number'      => 'required|integer',
-            'day'                => 'required',
-            'area_id'            => 'nullable',
-            'training_center_id' => 'nullable',
-            'environment_id'     => 'nullable',
-            'offer_id'           => 'nullable',
-            'quota'              => 'nullable|integer',
-        ]);
-
-        $course->update($data);
+        $course->update($request->all());
 
         return response()->json($course);
     }
@@ -62,6 +42,6 @@ class CourseController extends Controller
     {
         $course->delete();
 
-        return response()->json(['message' => 'Curso eliminado correctamente']);
+        return response()->json($course);
     }
 }

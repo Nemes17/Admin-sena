@@ -6,7 +6,6 @@
         <div class="col-md-8 col-lg-6">
             <div class="card border-0 shadow-sm rounded-4 p-4 bg-white">
                 
-                <!-- Encabezado del Formulario -->
                 <div class="text-center mb-4">
                     <div class="bg-success-subtle text-success d-inline-flex p-3 rounded-circle mb-2">
                         <span class="material-symbols-outlined fs-2">domain</span>
@@ -15,7 +14,6 @@
                     <p class="text-secondary small">Ingresa la sede y ubicación del nuevo centro</p>
                 </div>
 
-                <!-- Mensaje de éxito -->
                 @if(session('success'))
                     <div class="alert alert-success alert-dismissible fade show rounded-3 border-0 shadow-sm" role="alert">
                         <div class="d-flex align-items-center gap-2">
@@ -29,7 +27,6 @@
                 <form action="{{ route('training_center.store') }}" method="POST">
                     @csrf
                     
-                    <!-- Campo Nombre -->
                     <div class="mb-3">
                         <label for="name" class="form-label fw-semibold">Nombre del Centro *</label>
                         <input 
@@ -45,7 +42,6 @@
                         @enderror
                     </div>
 
-                    <!-- Campo Ubicación -->
                     <div class="mb-4">
                         <label for="location" class="form-label fw-semibold">Ubicación / Sede *</label>
                         <input 
@@ -61,7 +57,6 @@
                         @enderror
                     </div>
 
-                    <!-- Acciones -->
                     <div class="d-flex gap-2">
                         <a href="{{ url()->previous() }}" class="btn btn-light w-50 py-2 border fw-semibold">Cancelar</a>
                         <button 

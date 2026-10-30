@@ -2,7 +2,6 @@
 
 @section('content')
 
-
      <h2 mb-4 text-center>Registro de Aprendiz</h2>
      <div class="card shadow p-4">
 

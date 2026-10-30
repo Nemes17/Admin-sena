@@ -5,11 +5,13 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
+
 class Training_center extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['name', 'location'];
+    protected $fillable = ['name', 'location','imagen_url',
+        'imagen_public_id',];
     
      public function teachers(){
         return $this->hasMany('App\Models\Teacher');
@@ -18,7 +20,6 @@ class Training_center extends Model
         return $this->hasMany('App\Models\Course');
     }
 
-    // Un centro de formación tiene muchos ambientes
     public function environments(){
         return $this->hasMany('App\Models\Environment');
     }

@@ -5,13 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Admin SENA</title>
 
-    <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
-    <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
-    <!-- Bootstrap Icons -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet">
-    <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
 
@@ -29,7 +25,6 @@
             background-color: #F8F9FA;
         }
 
-        /* Tarjetas del dashboard */
         .card-dashboard {
             border: none;
             border-radius: 16px;
@@ -51,7 +46,6 @@
             margin: 0 auto 1rem auto;
         }
 
-        /* Botones institucionales */
         .btn-sena {
             background-color: var(--sena-green);
             border: none;
@@ -66,7 +60,6 @@
             color: #fff;
         }
 
-        /* Hero de la página de inicio */
         .hero-section {
             background: linear-gradient(135deg, var(--sena-green) 0%, var(--sena-green-dark) 100%);
             border-radius: 20px;
@@ -74,7 +67,6 @@
             padding: 3rem 2rem;
         }
 
-        /* Navbar */
         .navbar {
             box-shadow: 0 2px 8px rgba(0,0,0,0.08);
         }
@@ -92,7 +84,6 @@
 
     @include('includes.Footer')
 
-    <!-- Bootstrap JS -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>

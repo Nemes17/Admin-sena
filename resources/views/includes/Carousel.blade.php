@@ -1,4 +1,3 @@
-{{-- Carrusel institucional reutilizable (imágenes del SENA) --}}
 <div id="senaCarousel" class="carousel slide sena-carousel mb-4" data-bs-ride="carousel">
 
     <div class="carousel-indicators">

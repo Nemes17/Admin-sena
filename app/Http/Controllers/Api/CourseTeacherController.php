@@ -26,24 +26,14 @@ class CourseTeacherController extends Controller
 
     public function store(Request $request)
     {
-        $data = $request->validate([
-            'course_id'  => 'required',
-            'teacher_id' => 'required',
-        ]);
-
-        $assignment = CourseTeacher::create($data);
+        $assignment = CourseTeacher::create($request->all());
 
         return response()->json($assignment, 201);
     }
 
     public function update(Request $request, CourseTeacher $course_teacher)
     {
-        $data = $request->validate([
-            'course_id'  => 'required',
-            'teacher_id' => 'required',
-        ]);
-
-        $course_teacher->update($data);
+        $course_teacher->update($request->all());
 
         return response()->json($course_teacher);
     }
@@ -52,6 +42,6 @@ class CourseTeacherController extends Controller
     {
         $course_teacher->delete();
 
-        return response()->json(['message' => 'Asignación de instructor eliminada correctamente']);
+        return response()->json($course_teacher);
     }
 }

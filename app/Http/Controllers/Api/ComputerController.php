@@ -25,24 +25,12 @@ class ComputerController extends Controller
 
     public function store(Request $request)
     {
-        $data = $request->validate([
-            'brand'          => 'required|string|max:255',
-            'number'         => 'required|integer',
-            'environment_id' => 'nullable',
-        ]);
-
-        return response()->json(Computer::create($data), 201);
+        return response()->json(Computer::create($request->all()), 201);
     }
 
     public function update(Request $request, Computer $computer)
     {
-        $data = $request->validate([
-            'brand'          => 'required|string|max:255',
-            'number'         => 'required|integer',
-            'environment_id' => 'nullable',
-        ]);
-
-        $computer->update($data);
+        $computer->update($request->all());
 
         return response()->json($computer);
     }
@@ -51,6 +39,6 @@ class ComputerController extends Controller
     {
         $computer->delete();
 
-        return response()->json(['message' => 'Computador eliminado correctamente']);
+        return response()->json($computer);
     }
 }

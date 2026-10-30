@@ -13,7 +13,6 @@ use App\Models\Offer;
 
 class CourseController extends Controller
 {
-    //
     public function index(){
     $courses = Course::all();
     return view('course.index', compact('courses'));
@@ -23,7 +22,6 @@ class CourseController extends Controller
     $course = Course::find($id);
     return view('course.show', compact('course'));
     }
-    
 
     public function create(){
         $areas           = Area::all();
@@ -47,7 +45,6 @@ class CourseController extends Controller
         return redirect()->route('course.index')->with('success', 'Curso creado correctamente');
     }
 
-    
     public function edit(Course $course)
     {
     return view('course.edit', [

@@ -8,8 +8,6 @@ use App\Models\Environment;
 
 class ComputerController extends Controller
 {
-    // 
-    // Muestra el formulario de creación con los ambientes disponibles
     public function create(){
         $environments = Environment::all();
         return view('computer.create', compact('environments'));}
@@ -19,7 +17,6 @@ class ComputerController extends Controller
     return view('computer.index', compact('computers'));
     }
 
-    // Muestra el detalle de un computador
     public function show($id){
     $computer = Computer::find($id);
     return view('computer.show', compact('computer'));
@@ -36,7 +33,6 @@ class ComputerController extends Controller
                          ->with('success', 'Computador creado correctamente');
     }
 
-    
     public function edit(Computer $computer)
     {
     return view('computer.edit', [

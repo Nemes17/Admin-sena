@@ -7,14 +7,12 @@ use Illuminate\Http\Request;
 class AuthLogin extends Controller
 {
 
-    
     public function showLoginForm()
     {
         
         return view('auth.login');
     }
 
-   
     public function login(Request $request)
     {
         
@@ -23,12 +21,10 @@ class AuthLogin extends Controller
             'password' => ['required', 'string'],
         ]);
 
-        
         if (Auth::attempt($credentials)) {
             $request->session()->regenerate();
             $rol = Auth::user()->rol;
-            
-            
+
             if ($rol === 'admin') {
                 return redirect()->intended('/administrative'); 
             } elseif ($rol === 'instructor') {
@@ -38,13 +34,11 @@ class AuthLogin extends Controller
             }
         }
 
-        
         return back()->withErrors([
             'username' => 'Las credenciales proporcionadas no coinciden con nuestros registros.',
         ])->onlyInput('username');
     }
 
-   
     public function logout(Request $request)
     {
         Auth::logout();

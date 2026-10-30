@@ -35,7 +35,6 @@
             @endforeach
         </select>
         <br><br>
-        
 
         <label>Ambiente:</label>
         <select name="environment_id">

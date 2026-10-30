@@ -16,7 +16,6 @@ return new class extends Migration
             $table->integer('duration_months')->nullable();
             $table->enum('status', ['abierta', 'cerrada'])->default('abierta');
 
-            // Clave foránea hacia el área de formación
             $table->unsignedBigInteger('area_id')->nullable();
             $table->foreign('area_id')
             ->references('id')

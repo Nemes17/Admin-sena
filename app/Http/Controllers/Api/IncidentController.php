@@ -26,32 +26,14 @@ class IncidentController extends Controller
 
     public function store(Request $request)
     {
-        $data = $request->validate([
-            'description'    => 'required|string',
-            'status'         => 'nullable|string',
-            'environment_id' => 'nullable',
-            'computer_id'    => 'nullable',
-            'reported_by'    => 'nullable',
-            'resolved_at'    => 'nullable',
-        ]);
-
-        $incident = Incident::create($data);
+        $incident = Incident::create($request->all());
 
         return response()->json($incident, 201);
     }
 
     public function update(Request $request, Incident $incident)
     {
-        $data = $request->validate([
-            'description'    => 'required|string',
-            'status'         => 'nullable|string',
-            'environment_id' => 'nullable',
-            'computer_id'    => 'nullable',
-            'reported_by'    => 'nullable',
-            'resolved_at'    => 'nullable',
-        ]);
-
-        $incident->update($data);
+        $incident->update($request->all());
 
         return response()->json($incident);
     }
@@ -60,6 +42,6 @@ class IncidentController extends Controller
     {
         $incident->delete();
 
-        return response()->json(['message' => 'Novedad eliminada correctamente']);
+        return response()->json($incident);
     }
 }

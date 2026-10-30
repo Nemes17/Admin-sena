@@ -18,7 +18,6 @@
         <input type="email" name="email">
         <br><br>
 
-        
         <label>Area:</label>
         <select name="area_id">
             <option value="">-- Seleccionar --</option>
@@ -28,7 +27,6 @@
         </select>
         <br><br>
 
-        
         <label>Training Center:</label>
         <select name="training_center_id">
             <option value="">-- Seleccionar --</option>
@@ -37,7 +35,6 @@
             @endforeach
         </select>
         <br><br>
-        
 
         <button type="submit" class="btn btn-success" 
         onclick="this.disabled=true; this.form.submit();">

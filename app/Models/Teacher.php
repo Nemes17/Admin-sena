@@ -22,7 +22,6 @@ class Teacher extends Model
     public function training_center(){
         return $this->belongsTo('App\Models\Training_center');
     }
-    // Un instructor pertenece a muchos cursos a través de la tabla pivote course_teachers
     public function courses(){
         return $this->belongsToMany('App\Models\Course', 'course_teachers');
     }

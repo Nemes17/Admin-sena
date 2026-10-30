@@ -5,7 +5,6 @@
     <div class="row justify-content-center">
         <div class="col-md-6">
             
-            {{-- Alerta de éxito --}}
             @if(session('success'))
                 <div class="alert alert-success alert-dismissible fade show mb-4" role="alert">
                     <i class="fa-solid fa-circle-check me-2"></i>{{ session('success') }}
@@ -24,7 +23,6 @@
                     <form action="{{ route('area.store') }}" method="POST">
                         @csrf
 
-                        <!-- Campo Nombre -->
                         <div class="mb-4">
                             <label for="name" class="form-label fw-semibold">
                                 Nombre del Área <span class="text-danger">*</span>
@@ -52,7 +50,6 @@
                             @enderror
                         </div>
 
-                        <!-- Botones -->
                         <div class="d-flex justify-content-end gap-2 pt-2">
                             <a href="{{ route('area.index') }}" class="btn btn-light px-4">
                                 <i class="fa-solid fa-xmark me-1"></i> Cancelar

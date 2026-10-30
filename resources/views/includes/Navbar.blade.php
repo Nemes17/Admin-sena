@@ -76,7 +76,6 @@
                 @endif
             </ul>
 
-            <!-- Barra de búsqueda centrada/flexible -->
             <form class="d-flex align-items-center mx-auto" role="search" style="gap: 6px;">
                 <input class="form-control form-control-sm" type="search" placeholder="Buscar..." aria-label="Buscar"
                        style="border-radius: 20px; border: none; padding: 6px 14px; width: 220px;">
@@ -86,7 +85,6 @@
                 </button>
             </form>
 
-            <!-- Perfil de usuario -->
             <div class="dropdown ms-3">
                 <a class="d-flex align-items-center text-white text-decoration-none dropdown-toggle" href="#"
                    data-bs-toggle="dropdown">

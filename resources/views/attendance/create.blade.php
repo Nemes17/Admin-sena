@@ -9,7 +9,6 @@
     <div class="alert alert-success">{{ session('success') }}</div>
 @endif
 
-{{-- Selector de fecha: al cambiarla, recarga la lista de aprendices con lo ya guardado ese día --}}
 <form action="{{ route('attendance.create', $course->id) }}" method="GET" class="row g-2 align-items-end mb-4">
     <div class="col-auto">
         <label class="form-label">Fecha:</label>

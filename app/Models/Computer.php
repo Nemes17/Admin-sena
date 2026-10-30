@@ -11,7 +11,6 @@ class Computer extends Model
     
     protected $fillable = ['brand', 'number', 'environment_id'];
 
-    // Un computador pertenece a un ambiente
     public function environment(){
         return $this->belongsTo('App\Models\Environment');
     }
@@ -20,7 +19,6 @@ class Computer extends Model
         return $this->hasMany('App\Models\Apprentice');
     }
 
-    // Novedades reportadas sobre este computador
     public function incidents(){
         return $this->hasMany('App\Models\Incident');
     }

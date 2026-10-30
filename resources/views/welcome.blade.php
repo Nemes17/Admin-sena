@@ -12,19 +12,16 @@
 
     <title>Admin SENA</title>
 
-    <!-- Google Fonts -->
     <link
         href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;500;600;700;800&display=swap"
         rel="stylesheet"
     >
 
-    <!-- Material Icons -->
     <link
         href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap"
         rel="stylesheet"
     >
 
-    <!-- Bootstrap -->
     <link
         href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
         rel="stylesheet"
@@ -55,8 +52,6 @@
             background-color: var(--sena-bg);
             color: var(--sena-text);
         }
-
-        /* NAVBAR */
 
         .navbar-sena {
             min-height: 58px;
@@ -96,8 +91,6 @@
             border-radius: 20px;
         }
 
-        /* BOTÓN NAVBAR */
-
         .btn-sena {
             background-color: #ffffff;
             border: 1px solid #ffffff;
@@ -113,8 +106,6 @@
             color: var(--sena-green-dark);
             transform: translateY(-2px);
         }
-
-        /* BOTÓN INGRESAR */
 
         .btn-login {
             background-color: var(--sena-green-dark);
@@ -132,8 +123,6 @@
             transform: translateY(-2px);
             box-shadow: 0 10px 25px rgba(39, 140, 28, 0.25);
         }
-
-        /* HERO */
 
         .hero-section {
             background: #ffffff;
@@ -184,8 +173,6 @@
             font-size: 1.05rem;
             line-height: 1.7;
         }
-
-        /* HERO DERECHO */
 
         .hero-right {
             position: relative;
@@ -256,8 +243,6 @@
             margin-right: 85px;
         }
 
-        /* MÓDULOS */
-
         .modules-section {
             padding-top: 80px;
             padding-bottom: 70px;
@@ -278,8 +263,6 @@
             color: var(--sena-muted);
             line-height: 1.7;
         }
-
-        /* TARJETAS */
 
         .module-card {
             position: relative;
@@ -371,8 +354,6 @@
             background: #e8ecef;
         }
 
-        /* FOOTER */
-
         .footer-sena {
             background-color: var(--sena-green);
             border-top: none;
@@ -397,8 +378,6 @@
         .footer-links a:hover {
             color: #d9f4d3;
         }
-
-        /* RESPONSIVE */
 
         @media (max-width: 991.98px) {
 
@@ -451,8 +430,6 @@
 
 <body>
 
-    <!-- NAVBAR -->
-
     <nav class="navbar navbar-expand-lg navbar-sena fixed-top px-4 py-2">
 
         <div class="container-fluid">
@@ -501,10 +478,7 @@
 
     </nav>
 
-
     <main class="pt-5">
-
-        <!-- HERO -->
 
         <section class="container-fluid p-0 hero-section">
 
@@ -539,8 +513,6 @@
 
                         </p>
 
-                        <!-- RUTA EXACTA QUE ME DISTE -->
-
                         <a
                             href="{{route("login")}}"
                             class="btn btn-login btn-lg px-4 py-3 rounded-3 d-inline-flex align-items-center gap-2"
@@ -557,9 +529,6 @@
                     </div>
 
                 </div>
-
-
-                <!-- HERO DERECHO -->
 
                 <div class="col-lg-6 hero-right d-flex align-items-center justify-content-center">
 
@@ -611,15 +580,9 @@
 
         </section>
 
-
-        <!-- CARRUSEL INSTITUCIONAL -->
-
         <section class="container py-4">
             @include('includes.Carousel')
         </section>
-
-
-        <!-- MÓDULOS -->
 
         <section class="container modules-section">
 
@@ -640,8 +603,6 @@
             </div>
 
             <div class="row g-4">
-
-                <!-- ÁREAS -->
 
                 <div class="col-12 col-md-6 col-lg-4">
 
@@ -675,9 +636,6 @@
                     </div>
 
                 </div>
-
-
-                <!-- CENTROS -->
 
                 <div class="col-12 col-md-6 col-lg-4">
 
@@ -714,9 +672,6 @@
 
                 </div>
 
-
-                <!-- EQUIPOS -->
-
                 <div class="col-12 col-md-6 col-lg-4">
 
                     <div class="card module-card h-100">
@@ -750,9 +705,6 @@
 
                 </div>
 
-
-                <!-- CURSOS -->
-
                 <div class="col-12 col-md-6 col-lg-4">
 
                     <div class="card module-card h-100">
@@ -785,9 +737,6 @@
                     </div>
 
                 </div>
-
-
-                <!-- INSTRUCTORES -->
 
                 <div class="col-12 col-md-6 col-lg-4">
 
@@ -823,9 +772,6 @@
                     </div>
 
                 </div>
-
-
-                <!-- APRENDICES -->
 
                 <div class="col-12 col-md-6 col-lg-4">
 
@@ -886,9 +832,6 @@
 
     </main>
 
-
-    <!-- FOOTER -->
-
     <footer class="footer-sena py-4">
 
         <div class="container d-flex flex-column flex-md-row justify-content-between align-items-center gap-3">
@@ -931,7 +874,6 @@
         </div>
 
     </footer>
-
 
     <script
         src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"

@@ -63,32 +63,14 @@ class ApprenticeController extends Controller
 
     public function store(Request $request)
     {
-        $data = $request->validate([
-            'name'        => 'required|string|max:255',
-            'email'       => 'required|email|max:255',
-            'cell_number' => 'required|string|max:255',
-            'course_id'   => 'nullable',
-            'computer_id' => 'nullable',
-            'user_id'     => 'nullable',
-        ]);
-
-        $apprentice = Apprentice::create($data);
+        $apprentice = Apprentice::create($request->all());
 
         return response()->json($apprentice, 201);
     }
 
     public function update(Request $request, Apprentice $apprentice)
     {
-        $data = $request->validate([
-            'name'        => 'required|string|max:255',
-            'email'       => 'required|email|max:255',
-            'cell_number' => 'required|string|max:255',
-            'course_id'   => 'nullable',
-            'computer_id' => 'nullable',
-            'user_id'     => 'nullable',
-        ]);
-
-        $apprentice->update($data);
+        $apprentice->update($request->all());
 
         return response()->json($apprentice);
     }
@@ -97,6 +79,6 @@ class ApprenticeController extends Controller
     {
         $apprentice->delete();
 
-        return response()->json(['message' => 'Aprendiz eliminado correctamente']);
+        return response()->json($apprentice);
     }
 }

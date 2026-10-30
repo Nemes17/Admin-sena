@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
 use App\Models\Teacher;
+use App\Models\Course;
 use Illuminate\Http\Request;
 
 class TeacherController extends Controller
@@ -23,6 +24,13 @@ class TeacherController extends Controller
         return response()->json($teacher);
     }
 
+    public function aprendices($course)
+    {
+        $course = Course::with(['area', 'training_center', 'apprentices.computer'])->find($course);
+
+        return response()->json($course);
+    }
+
     public function index()
     {
         return response()->json(Teacher::with(['area', 'training_center'])->get());
@@ -35,30 +43,14 @@ class TeacherController extends Controller
 
     public function store(Request $request)
     {
-        $data = $request->validate([
-            'name'               => 'required|string|max:255',
-            'email'              => 'required|email|max:255',
-            'area_id'            => 'nullable',
-            'training_center_id' => 'nullable',
-            'user_id'            => 'nullable',
-        ]);
-
-        $teacher = Teacher::create($data);
+        $teacher = Teacher::create($request->all());
 
         return response()->json($teacher, 201);
     }
 
     public function update(Request $request, Teacher $teacher)
     {
-        $data = $request->validate([
-            'name'               => 'required|string|max:255',
-            'email'              => 'required|email|max:255',
-            'area_id'            => 'nullable',
-            'training_center_id' => 'nullable',
-            'user_id'            => 'nullable',
-        ]);
-
-        $teacher->update($data);
+        $teacher->update($request->all());
 
         return response()->json($teacher);
     }
@@ -67,6 +59,6 @@ class TeacherController extends Controller
     {
         $teacher->delete();
 
-        return response()->json(['message' => 'Instructor eliminado correctamente']);
+        return response()->json($teacher);
     }
 }

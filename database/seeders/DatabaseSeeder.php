@@ -6,8 +6,8 @@ namespace Database\Seeders;
 use Illuminate\Database\Seeder;
 use App\Models\User;
 use App\Models\Administrative; 
-use App\Models\Teacher; //[cite: 1]
-use App\Models\Apprentice; //[cite: 1]
+use App\Models\Teacher;
+use App\Models\Apprentice;
 use Illuminate\Support\Facades\Hash;
 
 class DatabaseSeeder extends Seeder
@@ -17,7 +17,6 @@ class DatabaseSeeder extends Seeder
      */
     public function run(): void
     { 
-       // 1. Administrador
         $userAdmin = User::create([
             'name' => 'Admin Principal',
             'username' => 'Admin',
@@ -35,7 +34,6 @@ class DatabaseSeeder extends Seeder
             'position' => 'Coordinador',
         ]);
 
-        // 2. Instructor
         $userInstructor = User::create([
             'name' => 'Instructor Prueba',
             'username' => 'Instructor',
@@ -50,7 +48,6 @@ class DatabaseSeeder extends Seeder
             'email' => 'instructor@sistema.com',
         ]);
 
-        // 3. Aprendiz (Con los campos obligatorios que exige su migración)
         $userAprendiz = User::create([
             'name' => 'Aprendiz Prueba',
             'username' => 'Aprendiz',

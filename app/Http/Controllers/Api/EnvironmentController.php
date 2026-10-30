@@ -25,24 +25,12 @@ class EnvironmentController extends Controller
 
     public function store(Request $request)
     {
-        $data = $request->validate([
-            'name'               => 'required|string|max:255',
-            'capacity'           => 'nullable|integer',
-            'training_center_id' => 'nullable',
-        ]);
-
-        return response()->json(Environment::create($data), 201);
+        return response()->json(Environment::create($request->all()), 201);
     }
 
     public function update(Request $request, Environment $environment)
     {
-        $data = $request->validate([
-            'name'               => 'required|string|max:255',
-            'capacity'           => 'nullable|integer',
-            'training_center_id' => 'nullable',
-        ]);
-
-        $environment->update($data);
+        $environment->update($request->all());
 
         return response()->json($environment);
     }
@@ -51,6 +39,6 @@ class EnvironmentController extends Controller
     {
         $environment->delete();
 
-        return response()->json(['message' => 'Ambiente eliminado correctamente']);
+        return response()->json($environment);
     }
 }

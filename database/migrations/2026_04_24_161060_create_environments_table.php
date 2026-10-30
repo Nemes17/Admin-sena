@@ -16,7 +16,6 @@ return new class extends Migration
             $table->string('name');
             $table->integer('capacity')->nullable();
 
-            // Clave foránea hacia la tabla de centros de formación
             $table->unsignedBigInteger('training_center_id')->nullable();
             $table->foreign('training_center_id')
             ->references('id')

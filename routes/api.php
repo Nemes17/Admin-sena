@@ -17,11 +17,10 @@ use App\Http\Controllers\Api\CourseTeacherController;
 use App\Http\Controllers\Api\AdministrativeController;
 use App\Http\Controllers\Api\AuthController;
 
-
-
 Route::post('login', [AuthController::class, 'login'])->name('api.v1.login');
 
 Route::get('teachers/home/{user}', [TeacherController::class, 'home'])->name('api.v1.teachers.home');
+Route::get('teachers/course/{course}/apprentices', [TeacherController::class, 'aprendices'])->name('api.v1.teachers.apprentices');
 Route::get('apprentices/home/{user}', [ApprenticeController::class, 'home'])->name('api.v1.apprentices.home');
 Route::get('apprentices/ofertas', [ApprenticeController::class, 'ofertas'])->name('api.v1.apprentices.ofertas');
 Route::post('apprentices/inscribirse/{user}/{course}', [ApprenticeController::class, 'inscribirse'])->name('api.v1.apprentices.inscribirse');
@@ -30,8 +29,6 @@ Route::post('apprentices/retirarme/{user}', [ApprenticeController::class, 'retir
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
-
-
 
 Route::get('areas/consulta1', [AreaController::class, 'consulta1'])->name('api.v1.areas.consulta1');
 Route::get('training-centers/consulta1', [TrainingCenterController::class, 'consulta1'])->name('api.v1.training-centers.consulta1');
@@ -46,7 +43,6 @@ Route::get('attendances/consulta1', [AttendanceController::class, 'consulta1'])-
 Route::get('incidents/consulta1', [IncidentController::class, 'consulta1'])->name('api.v1.incidents.consulta1');
 Route::get('course-teachers/consulta1', [CourseTeacherController::class, 'consulta1'])->name('api.v1.course-teachers.consulta1');
 Route::get('administratives/consulta1', [AdministrativeController::class, 'consulta1'])->name('api.v1.administratives.consulta1');
-
 
 Route::get('areas', [AreaController::class, 'index'])->name('api.v1.areas.index');
 Route::post('areas', [AreaController::class, 'store'])->name('api.v1.areas.store');

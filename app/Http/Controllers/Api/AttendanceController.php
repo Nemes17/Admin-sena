@@ -26,30 +26,14 @@ class AttendanceController extends Controller
 
     public function store(Request $request)
     {
-        $data = $request->validate([
-            'course_id'     => 'required',
-            'apprentice_id' => 'required',
-            'date'          => 'required',
-            'status'        => 'required|string',
-            'observations'  => 'nullable|string',
-        ]);
-
-        $attendance = Attendance::create($data);
+        $attendance = Attendance::create($request->all());
 
         return response()->json($attendance, 201);
     }
 
     public function update(Request $request, Attendance $attendance)
     {
-        $data = $request->validate([
-            'course_id'     => 'required',
-            'apprentice_id' => 'required',
-            'date'          => 'required',
-            'status'        => 'required|string',
-            'observations'  => 'nullable|string',
-        ]);
-
-        $attendance->update($data);
+        $attendance->update($request->all());
 
         return response()->json($attendance);
     }
@@ -58,6 +42,6 @@ class AttendanceController extends Controller
     {
         $attendance->delete();
 
-        return response()->json(['message' => 'Registro de asistencia eliminado correctamente']);
+        return response()->json($attendance);
     }
 }

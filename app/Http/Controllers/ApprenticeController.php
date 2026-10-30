@@ -11,7 +11,6 @@ use Illuminate\Support\Facades\Auth;
 
 class ApprenticeController extends Controller
 {
-    //
     
     public function home(){
         $apprentice = Apprentice::with('course.area', 'course.training_center', 'computer')
@@ -21,7 +20,6 @@ class ApprenticeController extends Controller
         return view('apprentice.home', compact('apprentice'));
     }
 
-    
     public function ofertas(){
         $apprentice = Apprentice::where('user_id', Auth::id())->first();
 
@@ -32,7 +30,6 @@ class ApprenticeController extends Controller
         return view('apprentice.ofertas', compact('offers', 'apprentice'));
     }
 
-    
     public function inscribirse(Course $course){
         $apprentice = Apprentice::where('user_id', Auth::id())->first();
 
@@ -40,12 +37,10 @@ class ApprenticeController extends Controller
             return back()->with('error', 'Tu usuario aún no está vinculado a un registro de Aprendiz.');
         }
 
-        
         if ($apprentice->course_id) {
             return back()->with('error', 'Ya estás inscrito en un curso. Debes retirarte antes de inscribirte a otro.');
         }
 
-        
         $cupos = $course->cuposDisponibles();
         if (!is_null($cupos) && $cupos <= 0) {
             return back()->with('error', 'Esta ficha ya no tiene cupos disponibles.');
@@ -57,7 +52,6 @@ class ApprenticeController extends Controller
         return redirect()->route('apprentice.home')->with('success', 'Te inscribiste correctamente al curso.');
     }
 
-    
     public function retirarme(){
         $apprentice = Apprentice::where('user_id', Auth::id())->first();
 
@@ -106,7 +100,6 @@ class ApprenticeController extends Controller
         'computers'  => Computer::all(),
     ]);
     }
-  
 
     public function update(Request $request, Apprentice $apprentice)
     {

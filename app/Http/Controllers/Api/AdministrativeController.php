@@ -26,32 +26,14 @@ class AdministrativeController extends Controller
 
     public function store(Request $request)
     {
-        $data = $request->validate([
-            'document_type'   => 'required|string|max:20',
-            'document_number' => 'required|string|max:30',
-            'names'           => 'required|string|max:60',
-            'last_names'      => 'required|string|max:60',
-            'position'        => 'required|string|max:50',
-            'user_id'         => 'nullable',
-        ]);
-
-        $administrative = Administrative::create($data);
+        $administrative = Administrative::create($request->all());
 
         return response()->json($administrative, 201);
     }
 
     public function update(Request $request, Administrative $administrative)
     {
-        $data = $request->validate([
-            'document_type'   => 'required|string|max:20',
-            'document_number' => 'required|string|max:30',
-            'names'           => 'required|string|max:60',
-            'last_names'      => 'required|string|max:60',
-            'position'        => 'required|string|max:50',
-            'user_id'         => 'nullable',
-        ]);
-
-        $administrative->update($data);
+        $administrative->update($request->all());
 
         return response()->json($administrative);
     }
@@ -60,6 +42,6 @@ class AdministrativeController extends Controller
     {
         $administrative->delete();
 
-        return response()->json(['message' => 'Administrativo eliminado correctamente']);
+        return response()->json($administrative);
     }
 }

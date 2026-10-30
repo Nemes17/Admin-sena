@@ -30,7 +30,6 @@ return new class extends Migration
 
             $table->timestamps();
 
-            // Un aprendiz solo puede tener un registro de asistencia por curso y por día
             $table->unique(['course_id', 'apprentice_id', 'date']);
         });
     }

@@ -10,7 +10,6 @@ use App\Models\Course;
 use App\Models\Apprentice;
 use Illuminate\Support\Facades\Auth;
 
-
 class TeacherController extends Controller
 {
    
@@ -23,11 +22,9 @@ class TeacherController extends Controller
         return view('teacher.home', compact('teacher', 'courses'));
     }
 
-    
     public function misAprendices(Course $course){
         $teacher = Teacher::where('user_id', Auth::id())->first();
 
-        
         if (!$teacher || !$teacher->courses->contains($course->id)) {
             abort(403, 'No tienes permiso para ver los aprendices de este curso.');
         }

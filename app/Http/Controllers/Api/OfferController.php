@@ -26,32 +26,14 @@ class OfferController extends Controller
 
     public function store(Request $request)
     {
-        $data = $request->validate([
-            'name'            => 'required|string|max:255',
-            'level'           => 'required|string',
-            'description'     => 'nullable|string',
-            'area_id'         => 'nullable',
-            'duration_months' => 'nullable|integer',
-            'status'          => 'nullable|string',
-        ]);
-
-        $offer = Offer::create($data);
+        $offer = Offer::create($request->all());
 
         return response()->json($offer, 201);
     }
 
     public function update(Request $request, Offer $offer)
     {
-        $data = $request->validate([
-            'name'            => 'required|string|max:255',
-            'level'           => 'required|string',
-            'description'     => 'nullable|string',
-            'area_id'         => 'nullable',
-            'duration_months' => 'nullable|integer',
-            'status'          => 'nullable|string',
-        ]);
-
-        $offer->update($data);
+        $offer->update($request->all());
 
         return response()->json($offer);
     }
@@ -60,6 +42,6 @@ class OfferController extends Controller
     {
         $offer->delete();
 
-        return response()->json(['message' => 'Oferta eliminada correctamente']);
+        return response()->json($offer);
     }
 }

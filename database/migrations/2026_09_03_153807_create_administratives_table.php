@@ -17,7 +17,7 @@ return new class extends Migration
             $table->string('document_number', 30)->unique();
             $table->string('names', 60);
             $table->string('last_names', 60);
-            $table->string('position', 50); // Cargo
+            $table->string('position', 50);
             $table->timestamps();
 
             $table->unsignedBigInteger('user_id')->nullable();
